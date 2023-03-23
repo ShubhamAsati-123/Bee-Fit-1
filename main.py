@@ -6,6 +6,16 @@ from flask import render_template ,request
 app = Flask(__name__)
 
 
+def file_id():
+    cwd = os.getcwd()
+    working_dir = cwd + r"\resources"
+    working_file = working_dir + r"\User_info.csv"
+    try:
+        os.mkdir(working_dir)
+    except:
+        a = os.getcwd()
+    return working_file
+
 
 @app.route("/",methods =['GET','POST'])
 def landing_page():
@@ -24,9 +34,12 @@ def SignUp_page():
         password = request.form['password']
         reenter =  request.form['re_password'] 
     
-        df = pd.read_csv("User_info.csv")
+        df = pd.read_csv(file_id())
         user_list = df["User Name"]
         user_list = list(user_list)
+        if len(Phone) != 10:
+            return render_template("signuppage.html")
+
         if password == reenter :
             if username not in user_list:
                 return account_creation(username, password,Email_id,Phone)
@@ -44,7 +57,7 @@ def SignIn_page():
         password = request.form['password']
         password_encoded = sha512(password.encode()).hexdigest()
     
-        df = pd.read_csv("User_info.csv")
+        df = pd.read_csv(file_id())
         user_list = df["User Name"]
         user_list = list(user_list)
         
@@ -65,7 +78,7 @@ def SignIn_page():
             if pass_in_data == password_encoded:
                 if log==0:
                     df.at[num,'First_login'] = 1
-                    df.to_csv("User_info.csv")
+                    df.to_csv(file_id())
                     return "<h1> please fill the data</h1>" # return more details page
                 
                 return render_template('main.html') # return main page here
@@ -90,7 +103,7 @@ def account_creation(username , password,Email_id,Phone):
     password_encoded = password_encoded + salt
     # here we are appending the data to our files
     fields = ["ID","User Name","Email_id","Phone_number","Password","Salt","First_login"]
-    df = pd.read_csv("User_info.csv")
+    df = pd.read_csv(file_id())
     df1 = df[fields]
     Id_arr = df["ID"]
     num = Id_arr[len(Id_arr)-1] + 1
@@ -98,11 +111,10 @@ def account_creation(username , password,Email_id,Phone):
     data = [[num,username,Email_id,Phone,password_encoded,salt,log]]
     df2 = pd.DataFrame(data,columns=fields)
     df1 = df1.append(df2)
-    df1.to_csv("User_info.csv")
+    df1.to_csv(file_id())
     return render_template("signupcomplete.html") # here we will return the account confirmation page
 
 if(__name__ ==" __main__"):
-    app.run(debug=True)
-
+    app.run()
 
 
