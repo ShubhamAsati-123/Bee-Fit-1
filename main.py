@@ -32,7 +32,7 @@ class articles:
             working_folder = os.getcwd() + "/resources/articles"
             articles_list = os.listdir(working_folder)
             for i in range(len(articles_list)):
-                locs[i] = working_folder + "/" + articles_list[i]
+                locs[i+1] = working_folder + "/" + articles_list[i]
         return locs
 
 
