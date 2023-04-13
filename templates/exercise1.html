@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Type</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename = 'exercise1.css')}}">
+</head>
+<body>
+    <div class="loader"></div>
+
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <div class="navitem" id="logo">
+            <a href="{{url_for('mainpage')}}"><img src="{{url_for('static',filename = 'images/logo.png')}}" alt="Logo" width="250px" id="logoimg"></a>  
+        </div>
+
+        <div class="navitem" id="home">
+        </div>
+        <div class="navitem" id="featurenav">
+            <h1>Exercise</h1>
+        </div>
+        <div class="navitem" id="ourteamnav">
+        </div>
+
+        <div class="navitem" id="profile">
+            <h1>Test User</h1>
+
+            <!-- Profile Hover -->
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <hr>
+                <li><a href="#">More Details</a></li>
+                <hr>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <h1 id="head">Exercise Based On Differen Types Of Exercise</h1>
+    <hr>
+
+    <div class="btn">
+        <div class="button1" id="btn1">Aerobic exercise</div>
+        <div class="button2" id="btn2">Resistance exercise</div>
+        <div class="button1" id="btn3">Flexibility exercise</div>
+        <div class="button1" id="btn4">High-intensity interval training (HIIT)</div>
+        <div class="button2" id="btn5">Circuit training</div>
+        <div class="button1" id="btn6">Low-intensity steady-state (LISS) training</div>
+    </div>
+
+    <hr>
+
+    <div class="g1">
+        <div class="heading">
+            Aerobic Exercise
+        </div>
+
+        <div class="video">
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+        </div>
+    </div>
+    <hr>
+    <div class="g2">
+        <div class="heading">
+            Resistance Exercise
+        </div>
+
+        <div class="video">
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+        </div>
+    </div>
+    <hr>
+    <div class="g1">
+        <div class="heading">
+            Flexibility Exercise
+        </div>
+
+        <div class="video">
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+        </div>
+    </div>
+    <hr>
+    <div class="g2">
+        <div class="heading">
+            High-intensity interval training (HIIT)
+        </div>
+
+        <div class="video">
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+        </div>
+    </div>
+    <hr>
+    <div class="g1">
+        <div class="heading">
+            Circuit Training
+        </div>
+
+        <div class="video">
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+        </div>
+    </div>
+    <hr>
+    <div class="g2">
+        <div class="heading">
+            Low-intensity steady-state (LISS) training
+        </div>
+
+        <div class="video">
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+            <iframe src="empty" frameborder="2" class="vid"></iframe>
+        </div>
+    </div>
+    <hr>
+
+    <!-- Bee Fit Section -->
+    <div class="section">
+        BEE FIT
+    </div>
+    
+    <hr>
+
+    <!-- Footer -->
+    <div class="footer" id="footer">
+        <h3><i> &copy </i>copyrights with our Team</h3>
+    </div>
+</body>
+
+<script>
+    function isnumberinput(evt){
+        var ch = String.fromCharCode(evt.which);
+
+        if (!(/[0-9]/.test(ch))){
+            evt.preventDefault();
+        }
+    }
+
+
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader--hidden");
+
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+    });
+    });
+
+</script>
+
+</html>

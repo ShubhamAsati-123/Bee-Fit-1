@@ -2,7 +2,7 @@
 /* BASIC */
 
 html {
-    background-color: #56baed;
+    background-color: #ff0000;
   }
   
   body {
@@ -11,7 +11,7 @@ html {
   }
   
   a {
-    color: #92badd;
+    color: #858585;
     display:inline-block;
     text-decoration: none;
     font-weight: 400;
@@ -44,7 +44,7 @@ html {
   #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #fff;
+    background: #ffed4d;
     padding: 30px;
     width: 90%;
     max-width: 450px;
@@ -56,7 +56,7 @@ html {
   }
   
   #formFooter {
-    background-color: #f6f6f6;
+    background-color: #000000;
     border-top: 1px solid #dce8f1;
     padding: 25px;
     text-align: center;
@@ -69,12 +69,12 @@ html {
   /* TABS */
   
   h2.inactive {
-    color: #cccccc;
+    color: #ffe600;
   }
   
   h2.active {
-    color: #0d0d0d;
-    border-bottom: 2px solid #5fbae9;
+    color: #ffffff;
+    border-bottom: 2px solid #000000;
   }
   
   
@@ -82,7 +82,7 @@ html {
   /* FORM TYPOGRAPHY*/
   
   input[type=button], input[type=submit], input[type=reset]  {
-    background-color: #56baed;
+    background-color: #000000;
     border: none;
     color: white;
     padding: 15px 80px;
@@ -91,8 +91,8 @@ html {
     display: inline-block;
     text-transform: uppercase;
     font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px 0 rgba(59, 59, 59, 0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
     margin: 5px 20px 40px 20px;
@@ -104,7 +104,7 @@ html {
   }
   
   input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color: #39ace7;
+    background-color: #363636;
   }
   
   input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -158,12 +158,12 @@ html {
   
   input[type=text]:focus{
     background-color: #fff;
-    border-bottom: 2px solid #5fbae9;
+    border-bottom: 2px solid #000000;
   }
   
   input[type=password]:focus{
     background-color: #fff;
-    border-bottom: 2px solid #5fbae9;
+    border-bottom: 2px solid #000000;
   }
   
   input[type=text]:placeholder{
@@ -264,13 +264,13 @@ html {
     bottom: -10px;
     width: 0;
     height: 2px;
-    background-color: #56baed;
+    background-color: #ffa600;
     content: "";
     transition: width 0.2s;
   }
   
   .underlineHover:hover {
-    color: #0d0d0d;
+    color: #ffe600;
   }
   
   .underlineHover:hover:after{

@@ -5,19 +5,214 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
+    
+    <!-- Adding CSS -->
+    <link rel="stylesheet" href="static/mainpage.css">
+
 </head>
-<body bgcolor="red">
+<body>
+    <div class="loader"></div>
+
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <div class="navitem" id="logo">
+            <a href="{{url_for('mainpage')}}"><img src="{{url_for('static',filename = 'images/logo.png')}}" alt="Logo" width="250px" id="logoimg"></a>  
+        </div>
+
+        <div class="navitem" id="home">
+        </div>
+        <div class="navitem" id="featurenav">
+        </div>
+        <div class="navitem" id="ourteamnav">
+        </div>
+
+        <div class="navitem" id="profile">
+            <h1>{{name}}</h1>
+
+            <!-- Profile Hover -->
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <li><a href="{{url_for('moredetails')}}">More Details</a></li>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Article -->
+    <div class="article" id="article" style="background: url(static/images/Fitness\ Article.png); background-repeat: no-repeat; background-size: cover;">
+
+        <div class="artitem" id="contentart">
+            <!-- Heading -->
+            <script>
+                var h=document.createElement("h1");
+            h.innerHTML={{head | tojson}};
+            document.getElementById("contentart").appendChild(h);
+            var par;
+             par=document.createElement("p");
+             par.innerHTML="Fitness is an important aspect of overall health and well-being. Maintaining a consistent fitness routine can help you feel better, increase your energy levels, improve your sleep, and reduce your risk of chronic diseases like diabetes, heart disease, and certain types of cancer.";
+             document.getElementById("contentart").appendChild(par);
+            par.innerHTML="Here are some tips to help you start and maintain a fitness routine:";
+            document.getElementById("contentart").appendChild(par);
+            var list={{body | tojson}};
+            console.log(list.length);
+            var listItem=document.createElement("li");
+            //var break=document.createElement("br");
+            var appendedlist=document.createElement("li");
+            for(let i=0;i<3;i++){
+                console.log(i);
+                console.log(list[i]);
+                listItem.innerHTML=list[i];
+                console.log(listItem);
+                appendedlist.appendChild(listItem);
+                
+              //  document.getElementById("contentart").appendChild(break);
+            }
+            console.log(appendedlist);
+            document.getElementById("contentart").appendChild(appendedlist);
+            
+            </script>
+
+            <!-- Read More -->
+            <a href="{{url_for('readmore')}}"><h4>Read More...</h4></a> 
+
+        </div>
+
+    </div>
+
+    <hr>
     
-    fuck you {{Id}} <br>
-    <h1 id ='head'>{{head}}</h1> <br>
-    {{body}} <br>
-    <script type="text/javascript">
-        // alert(document.getElementById('head').innerHTML)
-        var test = {{body | tojson}}
-        console.log(test)
-    </script>
-    <!-- <script src="static\app.js"></script> -->
+    <!-- Features -->
+    <h1 id="ft">Features</h1>
+
+    <div class="btns" id="features">
+
+        <div class="btn" id="exercise">
+
+            <!-- Picture -->
+            <img src="{{url_for('static',filename = 'images/execise 1.jpg')}}" alt="Exercise"  id="exerpic" width="550em" height="350em" >
+
+            <!-- Title -->
+            <h1 id="exerhead">Exercise</h1>
+
+            <div class="content" id="exercontent">
+                Exercise is physical activity for health, fitness, and well-being, ranging from low to high-intensity. It has many benefits, including improving cardiovascular health, reducing chronic disease risk, and strengthening muscles and bones.
+            </div>
+
+            <!-- Lets Explore -->
+            <div class="letexplore" id="exerlp">
+                <a href="{{url_for('exercise')}}" ><h2>Lets Explore</h2></a>
+            </div>
+
+        </div>
+
+        <div class="btn" id="diet">
+            
+            <!-- Picture -->
+            <img src="{{url_for('static',filename = 'images/deit 1.jpg')}}" alt="Exercise"  id="deitpic" width="550em" height="350em" >
+
+            <!-- Title -->
+            <h1 id="diethead">Diet</h1>
+
+            <!-- Title -->
+            <div class="deitcontent" id="deitcontent">
+                Diet refers to the types and amounts of food and drink we consume. A healthy diet is essential for good health, providing nutrients and energy while reducing the risk of chronic diseases.
+            </div>
+
+            <!-- Lets Explore -->
+            <div class="letexplore" id="dietlep">
+                <a href="{{url_for('diet')}}" ><h2>Lets Explore</h2></a>
+            </div>
+
+        </div>
+
+        <div class="btn" id="tracking">
+
+            <!-- Picture -->
+            <img src="{{url_for('static',filename = 'images/tracking 1.jpg')}}" alt="Exercise"  id="trackingpic" width="550em" height="350em" >
+
+            <h1 id="trackinghead">Tracking</h1>
+
+            <div class="content" id="trackingcontent">
+                Tracking health involves monitoring physical and mental well-being using various tools and methods such as wearable technology, medical devices, journaling, and regular check-ups. It helps identify potential health issues and promotes a healthy lifestyle.
+            </div>
+
+            <!-- Lets Explore -->
+            <div class="letexplore" id="trackinglep">
+                <a href="{{url_for('take')}}" ><h2>Lets Explore</h2></a>
+            </div>
+
+        </div>
+    </div>
+
+    <hr>
+    <!-- FeedBack -->
+    <div class="feedback">
+
+        <div class="fmhead">
+            <h1>Feed Back</h1>
+        </div>
+
+        <form action="#" class="details" method="post">
+            <div class="name">
+                <h3>Name:</h3> 
+                <input type="text" name="Name" value="{{name}}">
+            </div>
+
+            <div class="email">
+                <h3>Email:</h3> 
+                <input type="email" value="{{email_id}}">
+            </div>
+
+            <div class="contact">
+                <h3>Contact:</h3> 
+                <input type="tel" maxlength="10" onkeypress="isnumberinput(event)" value="{{phone_number}}">
+            </div>
+            
+            <div class="feedbackmsg">
+                <h3>Feedback Message</h3>
+                <textarea name="feedback" id="fm" cols="30" rows="10"></textarea>
+            </div>
+
+            <input type="submit" id="summitbutton"></input>
+        </form>
+    </div>
+
+    <hr>
+
+    <!-- Bee Fit Section -->
+    <div class="section">
+        BEE FIT
+    </div>
     
-  
+    <hr>
+
+    <!-- Footer -->
+    <div class="footer" id="footer">
+        <h3><i> &copy </i>copyrights with our Team</h3>
+    </div>
+
 </body>
+
+<script>
+    function isnumberinput(evt){
+        var ch = String.fromCharCode(evt.which);
+
+        if (!(/[0-9]/.test(ch))){
+            evt.preventDefault();
+        }
+    }
+
+
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader--hidden");
+
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+    });
+    });
+
+</script>
 </html>
