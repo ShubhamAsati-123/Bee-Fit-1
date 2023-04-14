@@ -68,79 +68,42 @@
     padding: 5px;
     text-align: center;
 }
+#featurenav{
+    border: 2px solid black;
+    background: black;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
 #logo a{
     text-decoration: none;
     color: white;
 }
 
-body{
-    background: linear-gradient(135deg, rgb(48, 47, 47), rgb(122, 126, 64), rgb(238, 238, 59));
-    background-repeat: no-repeat;
-}
-#dtls{
+.image{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
-    padding: 5em;
-    margin: auto;
-}
-h1{
-    text-align: center;
-    color: white;
-    background: black;
-    padding: 0em 4em;
-    border-radius: 0.5em;
-    width: 4em;
-}
-h3{
-    font-size: 2em;
-}
-.detail{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2em;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    /* background: linear-gradient(yellow, rgb(255, 217, 0)); */
-    background: white;
-    padding: 0em 2em;
-    width: 30em;
-    border-radius: 1em;
-}
-
-input[type=number]{
-    height: 2.2em;
-    font-size: 1.2em;
-    background: rgb(131, 240, 167);
-    border: 0.2em solid black;
-    border-radius: 1em;
-}
-select{
-    height: 2.8em;
-    width: 13em;
-    font-size: 1.2em;
-    background: rgb(131, 240, 167);
-    border: 0.2em solid black;
-    border-radius: 1em;
-}
-
-
-#detail_submit{
-    font-size: 1.5em;
-    margin: 0.2em;
-    padding: 0.5em 1.5em;
-    border: 0.2em solid black;
-    color: white;
-    background: #333333;
-    border-radius:1em ;
-}
-#detail_submit:hover{
-    background: #000000;
     
 }
+.image h1{
+    position: absolute;
+    font-size: 5em;
+    width: 12em;
+    text-align: center;
+}
+#img{
+    margin: 1em;
+    /* width: 120em; */
+}
+
+/* Content  */
+.content{
+    font-size: 2em;
+    margin: 2em;
+}
+
 
 /* Profile Hover Section */
 #profile ul{
@@ -162,12 +125,21 @@ select{
 #profile:hover ul{
     display: block;
 }
+
+/* Section */
+.section{
+    height: 300px;
+    text-align: center;
+    font-size: 50px;
+}
+
 /* Footer */
 .footer{
     text-align: center;
 }
+
 /* Hidden Section */
-#home, #ourteamnav, #featurenav{
+#home,#featurenav, #ourteamnav{
     border: none;
     padding: none;
     background: none;

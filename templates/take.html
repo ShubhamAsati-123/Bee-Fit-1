@@ -28,7 +28,7 @@
         </div>
 
         <div class="navitem" id="profile">
-            <h1>Test User</h1>
+            <h1>User</h1>
 
             <!-- Profile Hover -->
             <ul>
@@ -83,11 +83,15 @@
             <button onclick="addelements1()" class="btn">Add</button>
         </div>
     </div>
-
+    
+    
     <form action="">
-        <ul class="complete1" style="position: relative" id="e"></ul>
+      <ul class="complete1" style="position: relative" id="e"></ul>
     </form>
-
+    <div class="btn">
+      <a href="{{url_for('trackingpage')}}"><button id="analyse">Analyse</button></a>
+    </div>
+    
 
 
     <!-- Bee Fit Section -->
@@ -120,6 +124,7 @@
         currentFocus = -1;
         /*create a DIV element that will contain the items (values):*/
         a = document.createElement("DIV");
+        console.log( this.id );
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
         /*append the DIV element as a child of the autocomplete container:*/
@@ -250,7 +255,7 @@
       listspecs.innerText=x
       listcal.innerHTML=" "+checkcal;
       listserv.innerHTML=serv;
-      
+      listdelete.className="deletefood"
   
       // listdelete.style.position="absolute";"right";
       // listcheckb.style.position="absolute";"left";
@@ -312,6 +317,7 @@
   var sub=document.createElement("input")
   sub.type="submit";
   sub.innerText="submit";
+  sub.className="deletefood";
   sub.addEventListener('click',(e)=>{
     let mine;
   for(let i=document.getElementById("f").childElementCount-2;i>=0;i=i-1){
@@ -329,8 +335,10 @@
               data: JSON.stringify(resultdictionary)});
   
   })
+ 
   document.getElementById("f").appendChild(sub);
   }
+  listItem.className="listfood"
   document.getElementById("f").insertBefore(listItem,document.getElementById("f").children[0]);
   }
   else
@@ -502,8 +510,8 @@
         listspecs.innerText=x
         listcal.innerHTML=" "+checkcal1;
         listserv.innerHTML=" "+serv1;
+        listdelete.className="deletefood"
         
-    
         // listdelete.style.position="absolute";"right";
         // listcheckb.style.position="absolute";"left";
         // listcheckb.style.position="absolute";"right";
@@ -525,7 +533,7 @@
     
     // append
     let f=1
-    
+   ;
     
     for(let i=0;i<countries1.length;i++){
       if(countries1[i]==x)
@@ -540,6 +548,7 @@
     var sub=document.createElement("input")
     sub.type="submit";
     sub.innerText="submit";
+    sub.className="deletefood"
     sub.addEventListener('click',(e)=>{
       let mine;
     for(let i=document.getElementById("e").childElementCount-2;i>=0;i=i-1){
@@ -570,6 +579,7 @@
     })
     document.getElementById("e").appendChild(sub);
     }
+    listItem.className="listexercise";
     document.getElementById("e").insertBefore(listItem,document.getElementById("e").children[0]);
     }
     else

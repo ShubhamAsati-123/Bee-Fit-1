@@ -127,7 +127,7 @@ input[type=text] {
 }
 
 .complete {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     margin: 1em;
 }
 
@@ -145,22 +145,36 @@ input[type=text] {
 }
 
 .complete1 {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     margin: 1em;
 }
 
 
 
 .autocomplete-items {
-    border: 2px solid red;
+    position: absolute;
+    transform: translate(20%,53%);
+    /* border: 2px solid black; */
     margin: 1em;
     font-size: 1em ;
+    z-index: 99;
+    background: rgb(253, 255, 114);
 }
 
 .autocomplete-items1 {
-    border: 2px solid red;
+    position: absolute;
+    transform: translate(20%,53%);
+    /* border: 2px solid black; */
     margin: 1em;
     font-size: 1em ;
+    z-index: 99;
+    background: rgb(253, 255, 114);
+}
+#f{
+    display: grid;
+}
+#e{
+    display: grid;
 }
 
 .autocomplete-items div {
@@ -174,7 +188,17 @@ input[type=text] {
     margin: 1em;
     font-size: 1em ;
 }
-
+.deletefood{
+    font-size:1.5em;
+}
+.listfood{
+    background-color: #009578;
+    font-size: 1.5em;
+}
+.listexercise{
+    background-color: #009578;
+    font-size: 1.5em;
+}
 /*when hovering an item:*/
 .autocomplete-items div:hover {
     background-color: #e9e9e9;
@@ -204,8 +228,27 @@ input[type=text] {
     color: #ffffff;
 }
 
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#analyse{
+    font-size: 1.2em;
+    border: 2px solid black;
+    background: black;
+    color: white;
+    padding: 0.2em;
+    margin: 0.2em;
+}
+#analyse:hover{
+    background: #2e2e2e;
+}
 
-
+#myInput{
+    display: flex;
+    flex-direction: column;
+}
 
 /* Profile Hover Section */
 #profile ul{
