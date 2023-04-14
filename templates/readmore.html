@@ -4,11 +4,106 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Read more</title>
+    <title>Diet Page</title>
+
+    <link rel="stylesheet" href="static/article.css">
+
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mini logo.png')}}">
 </head>
 <body>
-    <marquee><h1>Anshul BSDK</h1></marquee>
-    <p>{{head}}</p>
-    {{body}}
+    <div class="loader"></div>
+
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <div class="navitem" id="logo">
+            <a href="{{url_for('mainpage')}}"><img src="{{url_for('static',filename='images/logo.png')}}" alt="Logo" width="250px" id="logoimg"></a>  
+        </div>
+
+        <div class="navitem" id="home">
+        </div>
+        <div class="navitem" id="featurenav">
+            <h1></h1>
+        </div>
+        <div class="navitem" id="ourteamnav">
+        </div>
+
+        <div class="navitem" id="profile">
+            <h1>User</h1>
+
+            <!-- Profile Hover -->
+            <ul>
+                <li><a href="{{url_for('profilepage')}}">Profile</a></li>
+                <hr>
+                <li><a href="{{url_for('moredetails')}}">More Details</a></li>
+                <hr>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="image">
+        <img src="{{url_for('static',filename='images/fitness article 1.png')}}" alt="image" id="img">
+        <h1>{{head}}</h1>
+    </div>
+    <div class="content" >
+        <p id="para">
+            <!-- Fitness is an important aspect of overall health and well-being. Maintaining a consistent fitness routine can help you feel better, increase your energy levels, improve your sleep, and reduce your risk of chronic diseases like diabetes, heart disease, and certain types of cancer. <br> <br>
+            Here are some tips to help you start and maintain a fitness routine: <br> <br>
+            1. Start small: If you're new to exercise, start with small, achievable goals. You could begin by taking a 10-minute walk each day, or doing a few minutes of stretching in the morning. As you get more comfortable, gradually increase the length and intensity of your workouts. <br> <br>
+
+            2. Find activities you enjoy: The best workout is the one that you'll stick to. Experiment with different types of exercise until you find something that you enjoy, whether it's yoga, running, dancing, or weightlifting. <br> <br>
+            3. Make it a habit: Consistency is key when it comes to fitness. Schedule your workouts at the same time each day or week, and make them a priority in your schedule. <br> <br>
+            4. Mix it up: Doing the same workout every day can get boring. Mix up your routine by trying new activities or incorporating different types of exercise into your routine. <br> <br>
+            5. Listen to your body: It's important to challenge yourself, but not at the expense of your health. Pay attention to how your body feels during and after exercise, and adjust your routine as needed. <br> <br>
+            6. Get enough rest and recovery: Exercise can be hard on your body, so it's important to give yourself time to rest and recover. Make sure to get enough sleep, eat a healthy diet, and take rest days as needed. <br>
+            <br>
+            Remember, fitness is a journey, not a destination. Be patient with yourself, celebrate your successes, and keep working toward your goals. With time and dedication, you'll see the benefits of regular exercise in your overall health and well-being. <br> -->
+        </p>
+    </div>
+
+    <hr>
+
+    <!-- Bee Fit Section -->
+    <div class="section">
+        BEE FIT
+    </div>
+    
+    <hr>
+
+    <!-- Footer -->
+    <div class="footer" id="footer">
+        <h3><i> &copy </i>copyrights with our Team</h3>
+    </div>
 </body>
+
+<script>
+    function isnumberinput(evt){
+        var ch = String.fromCharCode(evt.which);
+
+        if (!(/[0-9]/.test(ch))){
+            evt.preventDefault();
+        }
+    }
+
+
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader--hidden");
+
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+    });
+    });
+
+    var p= {{body | tojson}};
+    var s=document.createElement("p");
+    for(let i=0;i<p.length-1;i=i+1){
+   s.innerHTML+=p[i]+"<br />";
+    }s.innerHTML+=p[p.length-1];
+    document.getElementById("para").appendChild(s);
+
+</script>
+
 </html>

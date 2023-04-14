@@ -14,19 +14,19 @@
     <form action="#" method="post" id="dtls">
         <h1>More Details</h1>
 
-        <div class="detail" id="age">
+        <div class="detail" id="age" >
             <h3>Age</h3>
-            <input type="number" name="age" id="age" required>
+            <input type="text" name="age" id="age" onkeypress="isnumberinput(event)" min="0" required>
         </div>
 
         <div class="detail" id="weight">
             <h3>Weight</h3>
-            <input type="number" name="weight" id="weight" required>
+            <input type="number" name="weight" id="weight" onkeypress="isnumberinput(event)" min="0" required>
         </div>
 
         <div class="detail" id="height">
             <h3>Height</h3>
-            <input type="number" name="height" id="height" required>
+            <input type="number" name="height" id="height" onkeypress="isnumberinput(event)" min="0" required>
         </div>
 
         <div class="detail" id="bg">
@@ -49,4 +49,13 @@
 
     </form>
 </body>
+<script>
+    function isnumberinput(evt){
+        var ch = String.fromCharCode(evt.which);
+
+        if (!(/[0-9]/.test(ch))){
+            evt.preventDefault();
+        }
+    }
+</script>
 </html>

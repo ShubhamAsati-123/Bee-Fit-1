@@ -9,6 +9,8 @@
     <!-- Adding CSS -->
     <link rel="stylesheet" href="static/mainpage.css">
 
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mini logo.png')}}">
+
 </head>
 <body>
     <div class="loader"></div>
@@ -16,7 +18,7 @@
     <!-- Navigation Bar -->
     <div class="nav">
         <div class="navitem" id="logo">
-            <a href="{{url_for('mainpage')}}"><img src="{{url_for('static',filename = 'images/logo.png')}}" alt="Logo" width="250px" id="logoimg"></a>  
+            <a href="{{url_for('mainpage')}}"><img src="{{url_for('static',filename='images/logo.png')}}" alt="Logo" width="250px" id="logoimg"></a>  
         </div>
 
         <div class="navitem" id="home">
@@ -31,47 +33,23 @@
 
             <!-- Profile Hover -->
             <ul>
-                <li><a href="#">Profile</a></li>
+                <li><a href="{{url_for('profilepage')}}">Profile</a></li>
                 <li><a href="{{url_for('moredetails')}}">More Details</a></li>
                 <li><a href="{{url_for('logout')}}">Logout</a></li>
             </ul>
         </div>
 
     </div>
-
+    
     <!-- Article -->
-    <div class="article" id="article" style="background: url(static/images/Fitness\ Article.png); background-repeat: no-repeat; background-size: cover;">
+    <div class="article" id="article" style="background: url(Images/Fitness\ Article.png); background-repeat: no-repeat; background-size: cover;">
 
         <div class="artitem" id="contentart">
             <!-- Heading -->
-            <script>
-                var h=document.createElement("h1");
-            h.innerHTML={{head | tojson}};
-            document.getElementById("contentart").appendChild(h);
-            var par;
-             par=document.createElement("p");
-             par.innerHTML="Fitness is an important aspect of overall health and well-being. Maintaining a consistent fitness routine can help you feel better, increase your energy levels, improve your sleep, and reduce your risk of chronic diseases like diabetes, heart disease, and certain types of cancer.";
-             document.getElementById("contentart").appendChild(par);
-            par.innerHTML="Here are some tips to help you start and maintain a fitness routine:";
-            document.getElementById("contentart").appendChild(par);
-            var list={{body | tojson}};
-            console.log(list.length);
-            var listItem=document.createElement("li");
-            //var break=document.createElement("br");
-            var appendedlist=document.createElement("li");
-            for(let i=0;i<3;i++){
-                console.log(i);
-                console.log(list[i]);
-                listItem.innerHTML=list[i];
-                console.log(listItem);
-                appendedlist.appendChild(listItem);
-                
-              //  document.getElementById("contentart").appendChild(break);
-            }
-            console.log(appendedlist);
-            document.getElementById("contentart").appendChild(appendedlist);
+            <div id="para">
+<h1>{{head}}</h1>
+                </div>
             
-            </script>
 
             <!-- Read More -->
             <a href="{{url_for('readmore')}}"><h4>Read More...</h4></a> 
@@ -90,7 +68,7 @@
         <div class="btn" id="exercise">
 
             <!-- Picture -->
-            <img src="{{url_for('static',filename = 'images/execise 1.jpg')}}" alt="Exercise"  id="exerpic" width="550em" height="350em" >
+            <img src="{{url_for('static',filename='images/execise 1.jpg')}}" alt="Exercise"  id="exerpic" width="550em" height="350em" >
 
             <!-- Title -->
             <h1 id="exerhead">Exercise</h1>
@@ -100,16 +78,17 @@
             </div>
 
             <!-- Lets Explore -->
+            <a href="{{url_for('exercise')}}" >
             <div class="letexplore" id="exerlp">
-                <a href="{{url_for('exercise')}}" ><h2>Lets Explore</h2></a>
-            </div>
+                <h2>Lets Explore</h2>
+            </div></a>
 
         </div>
 
         <div class="btn" id="diet">
             
             <!-- Picture -->
-            <img src="{{url_for('static',filename = 'images/deit 1.jpg')}}" alt="Exercise"  id="deitpic" width="550em" height="350em" >
+            <img src="{{url_for('static',filename='images/deit 1.jpg')}}" alt="Exercise"  id="deitpic" width="550em" height="350em" >
 
             <!-- Title -->
             <h1 id="diethead">Diet</h1>
@@ -120,16 +99,17 @@
             </div>
 
             <!-- Lets Explore -->
+            <a href="{{url_for('diet')}}" >
             <div class="letexplore" id="dietlep">
-                <a href="{{url_for('diet')}}" ><h2>Lets Explore</h2></a>
-            </div>
+                <h2>Lets Explore</h2>
+            </div></a>
 
         </div>
 
         <div class="btn" id="tracking">
 
             <!-- Picture -->
-            <img src="{{url_for('static',filename = 'images/tracking 1.jpg')}}" alt="Exercise"  id="trackingpic" width="550em" height="350em" >
+            <img src="{{url_for('static',filename='images/tracking 1.jpg')}}" alt="Exercise"  id="trackingpic" width="550em" height="350em" >
 
             <h1 id="trackinghead">Tracking</h1>
 
@@ -138,9 +118,10 @@
             </div>
 
             <!-- Lets Explore -->
+            <a href="{{url_for('take')}}" >
             <div class="letexplore" id="trackinglep">
-                <a href="{{url_for('take')}}" ><h2>Lets Explore</h2></a>
-            </div>
+                <h2>Lets Explore</h2>
+            </div></a>
 
         </div>
     </div>
@@ -153,7 +134,7 @@
             <h1>Feed Back</h1>
         </div>
 
-        <form action="#" class="details" method="post">
+        <form action="#" class="details">
             <div class="name">
                 <h3>Name:</h3> 
                 <input type="text" name="Name" value="{{name}}">
@@ -174,7 +155,7 @@
                 <textarea name="feedback" id="fm" cols="30" rows="10"></textarea>
             </div>
 
-            <input type="submit" id="summitbutton"></input>
+            <input type="submit" id="summitbutton">Submit</input>
         </form>
     </div>
 
@@ -214,5 +195,12 @@
     });
     });
 
+
+    var p= {{body | tojson}};
+    var s=document.createElement("p");
+    for(let i=1;i<4;i=i+1){
+   s.innerHTML+=p[i]+"<br />";
+    }s.innerHTML+=p[p.length-1];
+    document.getElementById("para").appendChild(s);
 </script>
 </html>
