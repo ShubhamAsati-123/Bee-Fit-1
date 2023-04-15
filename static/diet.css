@@ -153,7 +153,13 @@ p{
     height: 10em;
     margin: 1em 20em;
 }
-.download{
+embed{
+    background: cyan;
+    height: 10em;
+    width: 52em;
+    /* margin: 1em 20em; */
+}
+.download a{
     display: flex;
     justify-content: center;
     align-items: center;

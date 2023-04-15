@@ -65,15 +65,13 @@ class articles:
 
     # returns the title of the article given
     def read_heading(file):
-       
-        with open(file,mode='r',encoding='utf8') as curr_file:
+        with open(file,mode='r') as curr_file:
             heading = curr_file.readline()
         return heading
     #  return the body of the article in form of a list
     def read_body(file):
         body_arr = []
-    
-        with open(file,mode='r',encoding='utf8') as curr_file:
+        with open(file,mode='r') as curr_file:
             heading = curr_file.readline()
             body = curr_file.readlines()
             for i in body:
@@ -320,6 +318,7 @@ def mainpage():
             body = articles.read_body(article)
             session['article'] = article
         else:
+           
             if session['date'] == str(datetime.today().date()):
                 article = session['article']
                 head = articles.read_heading(article)
@@ -348,16 +347,13 @@ def mainpage():
         return render_template('main.html',Id = Id,head = head,body= body,email_id = mail_id[0],phone_number = Phone_number[0],name=Name[0])
     else: 
         return redirect('signinpage')
-
-# route for profile page
+#route for profile page
 @app.route('/profilepage')
 def profilepage():
     if 'Id' in session:
-
         return render_template('profile_page.html')
     else:
         return redirect('landingpage')
-
 # route for exercise page
 @app.route('/exercise')
 def exercise():
@@ -384,6 +380,13 @@ def bodyparts():
 def typesofexercise():
     if 'Id' in session:
         return render_template('exercise1.html')
+    else:
+        return redirect('landingpage')
+#route for yoga
+@app.route('/yoga')
+def yoga():
+    if 'Id' in session:
+        return render_template('exercise3.html')
     else:
         return redirect('landingpage')
 
@@ -647,7 +650,9 @@ def account_creation(username , password,Email_id,Phone):
     log = 0
     data = [[num,username,Email_id,Phone,password_encoded,salt,log]]
     df2 = pd.DataFrame(data,columns=fields)
+    
     df1 = df1.append(df2)
+    
     df1 = df1[fields]
     df1.to_csv(file_id.User_info())
     return render_template("signupcomplete.html") # here we will return the account confirmation page
