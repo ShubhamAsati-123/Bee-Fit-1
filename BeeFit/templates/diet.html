@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Page</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename = 'diet.css')}}">
+</head>
+<body>
+    <div class="loader"></div>
+
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <div class="navitem" id="logo">
+            <a href="{{url_for('mainpage')}}"><img src="{{url_for('static',filename = 'images/logo.png')}}" alt="Logo" width="250px" id="logoimg"></a>  
+        </div>
+
+        <div class="navitem" id="home">
+        </div>
+        <div class="navitem" id="featurenav">
+            <h1>Diet</h1>
+        </div>
+        <div class="navitem" id="ourteamnav">
+        </div>
+
+        <div class="navitem" id="profile">
+            <h1>User</h1>
+
+            <!-- Profile Hover -->
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <hr>
+                <li><a href="#">More Details</a></li>
+                <hr>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="display" style="background-image: url(Images/deit\ page.png); background-size: cover;">
+        <div class="quote">
+            <div class="quotehead">
+                <h3><span>“</span>If you keep good food in your fridge, you will eat good food.”</h3>
+                <h4>-Errick McAdams</h4>
+            </div>
+        </div>
+    
+        <h1>About</h1>
+        <p>Diet refers to the types and amounts of food that a person consumes regularly. 
+            A healthy and balanced diet includes a variety of foods that provide essential nutrients, vitamins, and minerals needed for good health. This includes whole grains, fruits, vegetables, lean protein sources, and healthy fats. <br>
+            A person's dietary needs can vary depending on factors such as age, gender, activity level, and overall health. Some people may also have specific dietary restrictions or preferences based on cultural, religious, or ethical beliefs. <br>
+            Maintaining a healthy diet can help reduce the risk of chronic diseases such as heart disease, diabetes, and certain cancers. A registered dietitian can provide personalized recommendations for a healthy and balanced diet.</p>
+    </div>
+
+    <hr>
+
+    <h2 id="plans">TYPE OF DIET</h2>
+    <!-- Plans -->
+    <div class="plan">
+        <div class="planheading">
+            <h3>Atkins Diet</h3>
+        </div>
+        <p>A low-carbohydrate, high-fat diet designed to promote weight loss.</p>
+
+        <div class="pdf">
+            <embed src="{{url_for('static',filename='dietplans/Atkins.pdf')}}" type="application/pdf">
+        </div>
+        <div class="download">
+            <a href="{{url_for('static',filename='dietplans/Atkins.pdf')}}"><h4>Download</h4></a>
+        </div>
+    </div>
+    <hr>
+    <div class="plan">
+        <div class="planheading">
+            <h3>Mediterranean Diet</h3>
+        </div>
+        <p> A diet rich in fruits, vegetables, whole grains, nuts, seeds, and healthy fats such as olive oil. It is associated with a lower risk of heart disease, diabetes, and some types of cancer.</p>
+        <div class="pdf">
+            <embed src="{{url_for('static',filename='dietplans/Mediterraneandiet.pdf')}}" type="application/pdf">
+        </div>
+        <div class="download">
+            <a href="{{url_for('static',filename='dietplans/Mediterraneandiet.pdf')}}"><h4>Download</h4></a>
+        </div>
+    </div>
+    <hr>
+    <div class="plan">
+        <div class="planheading">
+            <h3>Vegan Diet</h3>
+        </div>
+        <p>A diet that excludes all animal products, including meat, dairy, and eggs. It is associated with a lower risk of heart disease, high blood pressure, and some types of cancer, but requires careful planning to ensure adequate nutrient intake.</p>
+        <div class="pdf">
+            <embed src="{{url_for('static',filename='dietplans/Vegan.pdf')}}" type="application/pdf">
+        </div>
+        <div class="download">
+            <a href="{{url_for('static',filename='dietplans/Vegan.pdf')}}"><h4>Download</h4></a>
+        </div>
+    </div>
+    <hr>
+    <div class="plan">
+        <div class="planheading">
+            <h3>Vegetarian Diet</h3>
+        </div>
+        <p>A diet that excludes meat but includes dairy and eggs. It is associated with a lower risk of heart disease, high blood pressure, and some types of cancer, but requires careful planning to ensure adequate nutrient intake.</p>
+        <div class="pdf">
+            <embed src="{{url_for('static',filename='dietplans/21-Days-of-menus_975.pdf')}}" type="application/pdf">
+        </div>
+        <div class="download">
+            <h4>Download</h4>
+            <a href="{{url_for('static',filename='dietplans/21-Days-of-menus_975.pdf')}}"><h4>Download</h4></a>
+        </div>
+    </div>
+    <hr>
+    <div class="plan">
+        <div class="planheading">
+            <h3>DASH Diet</h3>
+        </div>
+        <p>A diet that emphasizes fruits, vegetables, whole grains, lean protein sources, and low-fat dairy products, while limiting saturated and trans fats, salt, and added sugars. It is designed to lower blood pressure and reduce the risk of heart disease.</p>
+        <div class="pdf">
+            <embed src="{{url_for('static',filename='dietplans/dash.pdf')}}" type="application/pdf">
+        </div>
+        <div class="download">
+            <h4>Download</h4>
+            <a href="{{url_for('static',filename='dietplans/dash.pdf')}}"><h4>Download</h4></a>
+        </div>
+    </div>
+    <hr>
+    <div class="plan">
+        <div class="planheading">
+            <h3>Paleo Diet</h3>
+        </div>
+        <p>A diet based on the types of foods presumed to have been eaten by early humans, including meat, fish, fruits, and vegetables. It restricts grains, dairy, and processed foods.</p>
+        <div class="pdf">
+            <embed src="{{url_for('static',filename='dietplans/Paleo_Diet.pdf')}}" type="application/pdf">
+        </div>
+        <div class="download">
+            <a href="{{url_for('static',filename='dietplans/Paleo_Diet.pdf')}}"><h4>Download</h4></a>
+            <h4>Download</h4>
+        </div>
+    </div>
+    <hr>
+    <div class="plan">
+        <div class="planheading">
+            <h3>Whole30 Diet</h3>
+        </div>
+        <p>A 30-day program that eliminates sugar, alcohol, grains, dairy, and processed foods, with the goal of improving health and resetting eating habits.</p>
+        <div class="pdf">
+            <embed src="{{url_for('static',filename='dietplans/Whole.pdf')}}" type="application/pdf">
+        </div>
+        <div class="download">
+            <h4>Download</h4>
+            <a href="{{url_for('static',filename='dietplans/Whole.pdf')}}"><h4>Download</h4></a>
+        </div>
+    </div>
+    <hr>
+    <div class="plan">
+        <div class="planheading">
+            <h3>Zone Diet</h3>
+        </div>
+        <p> A diet that emphasizes a specific ratio of protein, carbohydrates, and fat in each meal, with the goal of balancing blood sugar and promoting weight loss.</p>
+        <div class="pdf">
+            <embed src="{{url_for('static',filename='dietplans/zone.pdf')}}" type="application/pdf">
+        </div>
+        <div class="download">
+            <h4>Download</h4>
+            <a href="{{url_for('static',filename='dietplans/zone.pdf')}}"><h4>Download</h4></a>
+        </div>
+    </div>
+    <hr>
+
+    
+   
+    
+
+
+    <!-- Bee Fit Section -->
+    <div class="section">
+        BEE FIT
+    </div>
+    
+    <hr>
+
+    <!-- Footer -->
+    <div class="footer" id="footer">
+        <h3><i> &copy </i>copyrights with our Team</h3>
+    </div>
+</body>
+
+<script>
+    function isnumberinput(evt){
+        var ch = String.fromCharCode(evt.which);
+
+        if (!(/[0-9]/.test(ch))){
+            evt.preventDefault();
+        }
+    }
+
+
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader--hidden");
+
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+    });
+    });
+
+</script>
+
+</html>
