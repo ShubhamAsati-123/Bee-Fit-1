@@ -1,0 +1,317 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #333333;
+    transition: opacity 0.75s, visibility 0.75s;
+  }
+  
+  .loader--hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .loader::after {
+    content: "";
+    width: 75px;
+    height: 75px;
+    border: 15px solid #dddddd;
+    border-top-color: #009578;
+    border-radius: 50%;
+    animation: loading 0.75s ease infinite;
+  }
+  
+  @keyframes loading {
+    from {
+      transform: rotate(0turn);
+    }
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+/* Navigation Bar */
+.nav{
+    border: 2px solid black;
+    width: 99%;
+    height: 80px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(yellow, rgb(255, 196, 0));
+    color: white;
+}
+#logoimg{
+    border: 2px solid black;
+    border-radius: 10px;
+    background: black;
+    margin: 5px;
+    color: white;
+}
+#profile{
+    border: 2px solid black;
+    background: black;
+    border-radius: 30px;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
+#logo a{
+    text-decoration: none;
+    color: white;
+}
+
+/* Article Section */
+.article{
+    width: 100%;
+    height: 600px;
+    display: grid;
+}
+#contentart h1{
+    text-align: center;
+    font-size: 5em;
+}
+#contentart p{
+    font-size: 2rem;
+    margin: 10px;
+}
+#artlist{
+    list-style: none;
+    font-size: 1.5rem;
+    margin: 20px;
+}
+#contentart a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+/* Feature Section */
+#ft{
+    text-align: center;
+    font-size: 6em;
+}
+
+.btn{
+    border: 2px solid black;
+}
+
+/* Exercise Button */
+#exerpic{grid-area: ep;}
+#exerhead{grid-area: eh;}
+#exercontent{grid-area: ec;}
+#exerlp{grid-area: elp;}
+
+#exercise{
+    background: #FFEB3A;
+    display: grid;
+    grid-template-areas: 'ep eh' 'ep eh' 'ep ec' 'ep elp';
+    margin: 2em;
+    padding: 1em;
+}
+#exerhead{
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0em 1em;
+}
+#exercontent{
+    font-size: 2em;
+    margin: 0em 1em;
+    text-align: center;
+}
+
+#exerlp{
+    background: black;
+    border: 2px solid black;
+    text-align: center;
+    margin: 0em 15em;
+    border-radius: 2em;
+    color: white;
+}
+
+
+/* Diet Button */
+#deitpic{grid-area: dp;}
+#diethead{grid-area: dh;}
+#deitcontent{grid-area: dc;}
+#dietlep{grid-area: dlp;}
+
+#diet{
+    background: #D9D9D9;
+    display: grid;
+    grid-template-areas: 'dh dp' 'dh dp' 'dc dp' 'dlp dp';
+    margin: 2em;
+    padding: 1em;
+}
+#diethead{
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0em 1em;
+}
+#deitcontent{
+    font-size: 2em;
+    margin: 1.5em 1em;
+    text-align: center;
+}
+
+#dietlep{
+    background: black;
+    border: 2px solid black;
+    text-align: center;
+    margin: 0em 15em;
+    border-radius: 2em;
+    color: white;
+}
+
+
+/* Tracking Button */
+#trackingpic{grid-area: tp;}
+#trackinghead{grid-area: th;}
+#trackingcontent{grid-area: tc;}
+#trackinglep{grid-area: tlp;}
+
+#tracking{
+    background: #5F5F5F;
+    display: grid;
+    grid-template-areas: 'tp th' 'tp th' 'tp tc' 'tp tlp';
+    margin: 2em;
+    padding: 1em;
+}
+#trackinghead{
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0em 1em;
+}
+#trackingcontent{
+    font-size: 2em;
+    margin: 0em 1em;
+    text-align: center;
+}
+
+a #trackinglep{
+    background: black;
+    border: 2px solid black;
+    text-align: center;
+    margin: 0em 15em;
+    border-radius: 2em;
+    color: white;
+}
+a:link{
+    text-decoration: none;
+}
+
+/* FeedBack */
+.feedback{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 50em;
+    /* border: 2px solid black; */
+}
+.fmhead{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-10rem);
+}
+.fmhead h1{
+
+    text-align: center;
+    font-size: 5em;
+}
+
+.feedback form{
+    font-size: 2.5em;
+}
+input[type=text]{
+    font-size: 1em;
+}
+input[type=email]{
+    font-size: 1em;
+}
+input[type=tel]{
+    font-size: 1em;
+}
+
+#fm{
+    font-size: 1em;
+    width: 15em;
+    height: 3em;
+}
+
+#summitbutton{
+    background: black;
+    color: white;
+    font-size: 1em;
+    margin: 1em 5em;
+    border: 0.1em solid black;    
+}
+#summitbutton:hover{
+    background-color: #414141;
+}
+
+.name{grid-area: name; background: yellow; margin-top: 1em; padding: 0.5em 0.5em;}
+.email{grid-area: email; background: rgb(90, 90, 90); padding: 0.5em 0.5em;}
+.contact{grid-area: contact; background: yellow; padding: 0.5em 0.5em;}
+.feedbackmsg{grid-area: fmsg; background: rgb(90, 90, 90); padding: 0.5em 0.5em;}
+#summitbutton{grid-area: submitbtn;}
+
+.details{
+    display: grid;
+    grid-template-areas: 'name' 'email' 'contact' 'fmsg' 'submitbtn';
+}
+
+/* Profile Hover Section */
+#profile ul{
+    display:  none;
+    list-style: none;
+    border: 2px solid blue;
+    position: absolute;
+    background: rgba(218, 218, 218, 0.74);
+    transform: translateX(50%);
+}
+#profile ul li{
+    font-size: 2em;
+    margin: 5px;
+}
+#profile ul li a{
+    text-decoration: none;
+    color: black;
+}
+#profile:hover ul{
+    display: block;
+}
+
+/* Section */
+.section{
+    height: 300px;
+    text-align: center;
+    font-size: 50px;
+}
+
+
+/* Footer */
+.footer{
+    text-align: center;
+}
+
+
+
+/* Hidden Section */
+#home, #featurenav,#ourteamnav{
+    border: none;
+    padding: none;
+    background: none;
+}

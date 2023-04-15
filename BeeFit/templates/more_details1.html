@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill Details</title>
+
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mini logo.png')}}">
+
+    <link rel="stylesheet" href="static/more_details1.css">
+</head>
+<body>
+    <div class="loader"></div>
+
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <div class="navitem" id="logo">
+            <a href="{{url_for('mainpage')}}"><img src="{{url_for('static',filename = 'images/logo.png')}}" alt="Logo" width="250px" id="logoimg"></a>  
+        </div>
+
+        <div class="navitem" id="home">
+        </div>
+        <div class="navitem" id="featurenav">
+            <!-- <h1>Diet</h1> -->
+        </div>
+        <div class="navitem" id="ourteamnav">
+        </div>
+
+        <div class="navitem" id="profile">
+            <h1>User</h1>
+
+            <!-- Profile Hover -->
+            <ul>
+                <li><a href="{{url_for('profilepage')}}">Profile</a></li>
+                <hr>
+                <li><a href="{{url_for('moredetails')}}">More Details</a></li>
+                <hr>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <form action="#" method="post" id="dtls">
+        <h1>More Details</h1>
+
+        <div class="detail" id="age">
+            <h3>Age</h3>
+            <input type="number" name="age" id="age" min="0" required>
+        </div>
+
+        <div class="detail" id="weight">
+            <h3>Weight</h3>
+            <input type="number" name="weight" id="weight" min="0" required>
+        </div>
+
+        <div class="detail" id="height">
+            <h3>Height</h3>
+            <input type="number" name="height" id="height" min="0" required>
+        </div>
+
+        <div class="detail" id="bg">
+            <h3>Blood Group</h3>
+            <select name="blood_group" id="blood_group" required>
+                <option value="A+ve">A+ve</option>
+                <option value="A-ve">A-ve</option>
+                <option value="B+ve">B+ve</option>
+                <option value="B-ve">B-ve</option>
+                <option value="AB+ve">AB+ve</option>
+                <option value="AB-ve">AB-ve</option>
+                <option value="O+ve">O+ve</option>
+                <option value="O-ve">O-ve</option>
+                </select>
+        </div>
+
+        <div class="button">
+            <input type="submit" value="Update" id="detail_submit">
+        </div>
+
+    </form>
+    <hr>
+
+     <!-- Footer -->
+     <div class="footer" id="footer">
+        <h3><i> &copy </i>copyrights with our Team</h3>
+    </div>
+</body>
+
+<script>
+    function isnumberinput(evt){
+        var ch = String.fromCharCode(evt.which);
+
+        if (!(/[0-9]/.test(ch))){
+            evt.preventDefault();
+        }
+    }
+
+
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader--hidden");
+
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+    });
+    });
+
+</script>
+
+</html>

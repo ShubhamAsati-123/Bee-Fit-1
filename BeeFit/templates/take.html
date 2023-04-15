@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <link rel="stylesheet" href="static/take.css">
+    <!-- <script type="text/javascript" src="{{url_for('static',filename='take.js')}}"></script> -->
+    
+</head>
+
+<body>
+    <div class="loader"></div>
+
+    <!-- Navigation Bar -->
+    <div class="nav">
+        <div class="navitem" id="logo">
+            <a href="{{url_for('mainpage')}}"><img src="{{url_for('static',filename = 'images/logo.png')}}" alt="Logo" width="250px" id="logoimg"></a>  
+        </div>
+
+        <div class="navitem" id="home">
+        </div>
+        <div class="navitem" id="featurenav">
+            <h1>Tracking</h1>
+        </div>
+        <div class="navitem" id="ourteamnav">
+        </div>
+
+        <div class="navitem" id="profile">
+            <h1>User</h1>
+
+            <!-- Profile Hover -->
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <hr>
+                <li><a href="#">More Details</a></li>
+                <hr>
+                <li><a href="{{url_for('logout')}}">Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <!--Make sure the form has the autocomplete function switched off-->
+
+    <h1 id="heading">Details</h1>
+
+    <div class="container">
+        <div autocomplete="off" class="autocomplete">
+            Food List: <input id="myInput" type="text" name="myCountry" placeholder="Food List">
+        </div>
+    
+        <div id="mycalorie" class="calorie">
+            Serving: <input type="text" name="myCountry" placeholder="Serving">
+        </div>
+        <div class="button">
+            <button onclick="addelements()" class="btn">Add</button>
+        </div>
+    </div>
+    
+
+
+
+    <form action="">
+        <ul class="complete" style="position: relative" id="f"></ul>
+    </form>
+
+
+
+
+    <div class="container">
+        <div autocomplete1="off" class="autocomplete1" >
+            Exercise: <input id="myInput1" type="text" name="myCountry" placeholder="Exercise">
+        </div>
+
+        <div id="mycalorie1" class="calorie">
+            Time: <input type="text" name="myCountry" placeholder="Time(in Min)">
+        </div>
+
+        <div class="button">
+            <button onclick="addelements1()" class="btn">Add</button>
+        </div>
+    </div>
+    
+    
+    <form action="">
+      <ul class="complete1" style="position: relative" id="e"></ul>
+    </form>
+    <div class="btn">
+      <a href="{{url_for('trackingpage')}}"><button id="analyse">Analyse</button></a>
+    </div>
+    
+
+
+    <!-- Bee Fit Section -->
+    <div class="section">
+        BEE FIT
+    </div>
+    
+    <hr>
+
+    <!-- Footer -->
+    <div class="footer" id="footer">
+        <h3><i> &copy </i>copyrights with our Team</h3>
+    </div>
+</body>
+<script>
+    var enterqauantiy;
+    var submitlist=[];
+    var serv="";
+    var resultdictionary={};
+  function autocomplete(inp, arr) {
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) { return false;}
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        console.log( this.id );
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+                 enterqauantiy=document.createElement("span")
+                enterqauantiy.innerHTML=dic[inp.value].slice(1);
+                if(document.getElementById("mycalorie").childElementCount==2)
+               document.getElementById("mycalorie").removeChild(document.getElementById("mycalorie").childNodes[3]);
+  document.getElementById("mycalorie").appendChild(enterqauantiy);
+                //enterquantity.innerHTML=dic[];
+  
+  
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+  }
+  
+  /*An array containing all the country names in the world:*/
+  // var countries = ["hello","hello1","hello2","hello4"];
+  var countries = {{food_list | tojson}};
+  var dic = {{data | tojson}};
+  // var dic = {"hello":"manas","hello1":"grass","hell2":"light","hell4":"one punch"};
+  
+  /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+  autocomplete(document.getElementById("myInput"), countries);
+  
+  function addelements(){
+      var x=document.getElementById("myInput").value;
+      let checkcal=document.getElementById("mycalorie").childNodes[1].value;
+  serv=document.getElementById("mycalorie").childNodes[3].innerHTML
+      // var para=document.createElement("p");
+  // para.innerText=x;
+      // let y="                                         ";
+      // let z=x.concat(y.slice(0,y.length- x.length),"o");
+      // console.log(z);
+      // console.log(y.length - x.length);
+      // console.log(document.getElementById("f").childElementCount);
+      var listItem = document.createElement("ul");
+      listItem.style.position="relative";
+      listItem.style.color="black";
+      var listspecs=document.createElement("span");
+      var listcheckb=document.createElement("button");
+      var listdelete=document.createElement("button");
+      var listcal=document.createElement("span");
+      var listserv=document.createElement("span");
+      serv.trim();
+      
+  
+  
+      // buttons
+      listcheckb.innerText="check";
+      listdelete.innerText="delete";
+      listspecs.innerText=x
+      listcal.innerHTML=" "+checkcal;
+      listserv.innerHTML=serv;
+      listdelete.className="deletefood"
+  
+      // listdelete.style.position="absolute";"right";
+      // listcheckb.style.position="absolute";"left";
+      // listcheckb.style.position="absolute";"right";
+      //  listcheckb.style.cssFloat="left";// not working for some reason
+  let checknum=0;
+  if(isNaN(checkcal)||parseInt(checkcal)<=0)
+  checknum=1;
+  
+      listcheckb.addEventListener('click',(e)=>{
+          // console.log(e.target.firstChild)
+          // console.log(e.target.parentNode.firstChild)
+          let r=e.target.parentNode;
+  console.log(r);
+  // console.log(r.allChildElements);
+          let f1=document.getElementById('f');
+          if(r.parentNode==f1)
+          {
+          f1.removeChild(r);
+           var s =document.createElement('s');
+           s.appendChild(r);
+          //  console.log(s.firstChild);
+          //  f1.appendChild(s);
+           f1.appendChild(s);
+      }
+          else{
+          // {console.log(r.allChildElements);
+              f1.removeChild(r.parentNode);
+              f1.insertBefore(r,f1.children[0]);
+           }
+          
+  
+  
+      });
+      listdelete.addEventListener('click',(e)=>{
+          let f=document.getElementById('f');
+          let r=e.target.parentNode;
+           f.removeChild(r);
+       if(f.childElementCount==1)
+     f.removeChild(f.firstChild);
+      
+    });
+  
+  
+  // append
+  let f=1
+  
+  
+  for(let i=0;i<countries.length;i++){
+    if(countries[i]==x)
+    f=0;
+  }
+  if(x.trim()!=""&&f==0&&checkcal.trim()!=""&&checknum==0){
+  listItem.appendChild(listdelete);
+  listItem.appendChild(listspecs);
+  listItem.appendChild(listcal);
+  listItem.appendChild(listserv);
+  if(document.getElementById("f").childElementCount==0){
+  var sub=document.createElement("input")
+  sub.type="submit";
+  sub.innerText="submit";
+  sub.className="deletefood";
+  sub.addEventListener('click',(e)=>{
+    let mine;
+  for(let i=document.getElementById("f").childElementCount-2;i>=0;i=i-1){
+   mine=document.getElementById("f").childNodes[i].childNodes[1].innerHTML
+   if(resultdictionary[mine]=== undefined)
+  resultdictionary[mine]=parseInt(document.getElementById("f").childNodes[i].childNodes[2].innerHTML.slice(1));
+  else
+  resultdictionary[mine]=parseInt(document.getElementById("f").childNodes[i].childNodes[2].innerHTML.slice(1))+resultdictionary[mine];
+  // s = JSON.stringify(resultdictionary);
+  }
+   $.ajax({
+              url:"/takeinput",
+              type:"POST",
+              contentType: "application/json",
+              data: JSON.stringify(resultdictionary)});
+  
+  })
+ 
+  document.getElementById("f").appendChild(sub);
+  }
+  listItem.className="listfood"
+  document.getElementById("f").insertBefore(listItem,document.getElementById("f").children[0]);
+  }
+  else
+  alert("please enter");
+  // first child
+  
+  // let p=document.getElementById('f').firstChild;
+  // console.log(p);
+  
+  
+      // newBtn.setAttribute("onclick",(e)=>console.log(e)); //does not work 
+      // newBtn.onclick = ()=>console.log('gello') //works
+  }
+  //newBtn.addEventListener("click") 
+  
+  // <h2>koko</h2>
+</script>
+
+<script >
+    //  change the value of dic1
+      var dic2= {{exercise_dict | tojson}};
+      var countries1 = {{exercise_list | tojson}};
+      console.log(dic2)
+      console.log(countries1)
+      
+     
+    autocomplete1(document.getElementById("myInput1"), countries1);
+    var enterqauantiy1;
+      var submitlist1=[];
+      var serv1="";
+      var resultdictionary1=0;
+    function autocomplete1(inp, arr) {
+    
+      console.log(arr);
+      /*the autocomplete function takes two arguments,
+      the text field element and an array of possible autocompleted values:*/
+      var currentFocus;
+      /*execute a function when someone writes in the text field:*/
+      inp.addEventListener("input", function(e) {
+          var a, b, i, val = this.value;
+          /*close any already open lists of autocompleted values*/
+          closeAllLists1();
+          if (!val) { return false;}
+          currentFocus = -1;
+          /*create a DIV element that will contain the items (values):*/
+          a = document.createElement("DIV");
+          a.setAttribute("id", this.id + "autocomplete-list1");
+          a.setAttribute("class", "autocomplete-items1");
+          /*append the DIV element as a child of the autocomplete container:*/
+          this.parentNode.appendChild(a);
+          /*for each item in the array...*/
+          for (i = 0; i < arr.length; i++) {
+            /*check if the item starts with the same letters as the text field value:*/
+            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+              /*create a DIV element for each matching element:*/
+              b = document.createElement("DIV");
+              /*make the matching letters bold:*/
+              b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+              b.innerHTML += arr[i].substr(val.length);
+              /*insert a input field that will hold the current array item's value:*/
+              b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+              /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function(e) {
+                  /*insert the value for the autocomplete text field:*/
+                  inp.value = this.getElementsByTagName("input")[0].value;
+                  enterqauantiy1=document.createElement("span");
+                  enterqauantiy1.innerHTML="minutes";
+                  if(document.getElementById("mycalorie1").childElementCount==2)
+                 document.getElementById("mycalorie1").removeChild(document.getElementById("mycalorie1").childNodes[3]);
+    document.getElementById("mycalorie1").appendChild(enterqauantiy1);
+                  //enterquantity.innerHTML=dic[];
+    
+    
+                  /*close the list of autocompleted values,
+                  (or any other open lists of autocompleted values:*/
+                  closeAllLists1();
+              });
+              a.appendChild(b);
+            }
+          }
+      });
+      /*execute a function presses a key on the keyboard:*/
+      inp.addEventListener("keydown", function(e) {
+          var x = document.getElementById(this.id + "autocomplete-list1");
+          if (x) x = x.getElementsByTagName("div");
+          if (e.keyCode == 40) {
+            /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+            currentFocus++;
+            /*and and make the current item more visible:*/
+            addActive(x);
+          } else if (e.keyCode == 38) { //up
+            /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+            currentFocus--;
+            /*and and make the current item more visible:*/
+            addActive1(x);
+          } else if (e.keyCode == 13) {
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            e.preventDefault();
+            if (currentFocus > -1) {
+              /*and simulate a click on the "active" item:*/
+              if (x) x[currentFocus].click();
+            }
+          }
+      });
+      function addActive1(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive1(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active1");
+      }
+      function removeActive1(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+          x[i].classList.remove("autocomplete-active1");
+        }
+      }
+      function closeAllLists1(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items1");
+        for (var i = 0; i < x.length; i++) {
+          if (elmnt != x[i] && elmnt != inp) {
+            x[i].parentNode.removeChild(x[i]);
+          }
+        }
+      }
+      /*execute a function when someone clicks in the document:*/
+      document.addEventListener("click", function (e) {
+          closeAllLists1(e.target);
+      });
+    }
+    
+    /*An array containing all the country names in the world:*/
+    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+    
+    
+    function addelements1(){
+        var x=document.getElementById("myInput1").value;
+        let checkcal1=document.getElementById("mycalorie1").childNodes[1].value;
+    serv1="minutes";
+        // var para=document.createElement("p");
+    // para.innerText=x;
+        // let y="                                         ";
+        // let z=x.concat(y.slice(0,y.length- x.length),"o");
+        // console.log(z);
+        // console.log(y.length - x.length);
+        // console.log(document.getElementById("f").childElementCount);
+        var listItem = document.createElement("ul");
+        listItem.style.position="relative";
+        listItem.style.color="black";
+        var listspecs=document.createElement("span");
+        var listcheckb=document.createElement("button");
+        var listdelete=document.createElement("button");
+        var listcal=document.createElement("span");
+        var listserv=document.createElement("span");
+        serv1.trim();
+        
+    
+    
+        // buttons
+        listcheckb.innerText="check";
+        listdelete.innerText="delete";
+        listspecs.innerText=x
+        listcal.innerHTML=" "+checkcal1;
+        listserv.innerHTML=" "+serv1;
+        listdelete.className="deletefood"
+        
+        // listdelete.style.position="absolute";"right";
+        // listcheckb.style.position="absolute";"left";
+        // listcheckb.style.position="absolute";"right";
+        //  listcheckb.style.cssFloat="left";// not working for some reason
+    let checknum1=0;
+    if(isNaN(checkcal1)||parseInt(checkcal1)<=0)
+    checknum1=1;
+    
+      
+        listdelete.addEventListener('click',(e)=>{
+            let f=document.getElementById('e');
+            let r=e.target.parentNode;
+             f.removeChild(r);
+         if(f.childElementCount==1)
+       f.removeChild(f.firstChild);
+        
+      });
+    
+    
+    // append
+    let f=1
+   ;
+    
+    for(let i=0;i<countries1.length;i++){
+      if(countries1[i]==x)
+      f=0;
+    }
+    if(x.trim()!=""&&f==0&&checkcal1.trim()!=""&&checknum1==0){
+    listItem.appendChild(listdelete);
+    listItem.appendChild(listspecs);
+    listItem.appendChild(listcal);
+    listItem.appendChild(listserv);
+    if(document.getElementById("e").childElementCount==0){
+    var sub=document.createElement("input")
+    sub.type="submit";
+    sub.innerText="submit";
+    sub.className="deletefood"
+    sub.addEventListener('click',(e)=>{
+      let mine;
+    for(let i=document.getElementById("e").childElementCount-2;i>=0;i=i-1){
+     mine=document.getElementById("e").childNodes[i].childNodes[1].innerHTML;
+     if(resultdictionary1!=undefined)
+    resultdictionary1=dic2[mine]*parseInt(document.getElementById("e").childNodes[i].childNodes[2].innerHTML.slice(1))+resultdictionary1;
+    else
+    resultdictionary1=dic2[mine]*parseInt(document.getElementById("e").childNodes[i].childNodes[2].innerHTML.slice(1));
+    // s = JSON.stringify(resultdictionary);
+    // let v = JSON.stringify(resultdictionary1);
+    // math.ceil(resultdictionary1); 
+    // alert(resultdictionary1+"fdv");
+    var ashmit = {"data" : resultdictionary1};
+    console.log(ashmit);
+    console.log(typeof ashmit)
+    console.log(typeof resultdictionary1)
+    
+    // alert(ashmit);
+    
+    // ashmit = JSON.stringify(ashmit)
+    }
+     $.ajax({
+                url:"/testinput",
+                type:"POST",
+                contentType: "application/json",
+                data: JSON.stringify(ashmit)});
+    
+    })
+    document.getElementById("e").appendChild(sub);
+    }
+    listItem.className="listexercise";
+    document.getElementById("e").insertBefore(listItem,document.getElementById("e").children[0]);
+    }
+    else
+    alert("please enter");
+    // first child
+    
+    // let p=document.getElementById('f').firstChild;
+    // console.log(p);
+    
+    
+        // newBtn.setAttribute("onclick",(e)=>console.log(e)); //does not work 
+        // newBtn.onclick = ()=>console.log('gello') //works
+    }
+    //newBtn.addEventListener("click") 
+    
+    // <h2>koko</h2>
+    
+      </script>
+
+<script>
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    loader.classList.add("loader--hidden");
+
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+    });
+    });
+
+</script>
+
+</html>
