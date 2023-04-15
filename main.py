@@ -293,8 +293,6 @@ def trackingpage():
                     if i == final_arr[j][0]:
                         idx = j
                         break
-                print(final_arr)
-                print(idx)
                 final_arr[idx][2] = calories_burnt_1[i]
         return render_template('reported.html',data= final_arr)
     else:
