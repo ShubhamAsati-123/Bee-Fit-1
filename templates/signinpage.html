@@ -9,7 +9,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="static\Login Page.css">
-    
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mini Logo.png')}}">
 </head>
 <body>
 
@@ -24,8 +24,8 @@
 
     <!-- Login Form -->
     <form action="#" method="post">
-      <input type="text" id="login" class="fadeIn second" placeholder="User Name" name="User_name" autocomplete="off">
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password"> <br>
+      <input type="text" id="login" class="fadeIn second" placeholder="User Name" name="User_name" autocomplete="off" required>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" required> <br>
       <input type="checkbox" name="rememberme" id="rememberme" value="1"> Remember Me <br>
       <input type="submit" class="fadeIn fourth" value="Sign In" id = "signinButton">
     </form>
