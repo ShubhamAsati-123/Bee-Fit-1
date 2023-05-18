@@ -8,6 +8,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mini Logo.png')}}">
     <link rel="stylesheet" href="static\Login Page.css">
 </head>
 <body>
@@ -23,11 +24,11 @@
 
     <!-- Login Form -->
     <form action="#" method="post">
-      <input type="text" id="login" class="fadeIn second" placeholder="User Name" name="User_name" autocomplete="off">
-      <input type="text" id="phonenumber" class="fadeIn second" placeholder="Phone Number" name="Phone_number" autocomplete="off">
-      <input type="text" id="email" class="fadeIn second" placeholder="Email" name="Email_id" autocomplete="off">
-      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password">
-      <input type="password" id="password" class="fadeIn third" name="re_password" placeholder=" Confirm Password">
+      <input type="text" id="login" class="fadeIn second" placeholder="User Name" name="User_name" autocomplete="off" required>
+      <input type="text" id="phonenumber" class="fadeIn second" placeholder="Phone Number" name="Phone_number" autocomplete="off" required>
+      <input type="text" id="email" class="fadeIn second" placeholder="Email" name="Email_id" autocomplete="off" required>
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Password" required>
+      <input type="password" id="password" class="fadeIn third" name="re_password" placeholder=" Confirm Password" required>
       <input type="submit" class="fadeIn fourth" value="Sign Up" id = "signinButton">
     </form>
   

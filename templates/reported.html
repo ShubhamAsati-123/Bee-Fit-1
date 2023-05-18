@@ -26,7 +26,7 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var x={{data| tojson}};
+        var x={{data | tojson}};
         var y=[['date', 'calorie in', 'calorie out']]
         for(let i=0;i<x.length;i++)
         y.push(x[i]);
