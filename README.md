@@ -6,7 +6,7 @@ __Please use the requirements.txt to full fill the required packages__
 
     pip install -r requirements.txt
 
-__To run the Server
+__To run the Server__
 
     flask --app main.py --debug run --> can do changes just need to reload the tab not to run server again.
 
