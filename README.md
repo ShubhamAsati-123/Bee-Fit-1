@@ -6,10 +6,9 @@ __Please use the requirements.txt to full fill the required packages__
 
     pip install -r requirements.txt
 
-Things Uploaded:
-Landing page
-Login Page
-Sign Up Page
+__To run the Server
+
+    flask --app main.py --debug run --> can do changes just need to reload the tab not to run server again.
 
 
 Introduction:
