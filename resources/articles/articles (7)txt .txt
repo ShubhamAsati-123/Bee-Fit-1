@@ -26,7 +26,7 @@ The super-sized nanocages have potential applications in fields such as drug
 delivery and biotechnology, where they could be used to deliver larger
 therapeutic biomolecules to specific parts of the body.
 
-The researchers also note that the large internal cavities of the nanocages
+The researchers also note that the large internal cavities of the nanocages
 could serve as a platform for the binding of large biomolecules, such as
 hydrophobic membrane proteins or proteases, which could be useful in drug
 discovery and development.
@@ -88,5 +88,3 @@ new method can extract and analyze simultaneously a wide variety of
 pesticides from human plasma."
 To learn more about the U.S. EPA's Occupational Pesticide Safety and Health
 program, visit the agency's website (https://www.epa.gov/pesticide-workersafety).
-
-
