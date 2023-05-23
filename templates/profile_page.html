@@ -8,19 +8,19 @@
   <body>
     <div class="container">
       <h1>Profile</h1>
-      <form>
+      <form  method="post" action="#">
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" value="{{name}}" required>
         <label for="gender">Gender:</label>
-        <select id="gender" name="gender">
+        <select id="gender" name="gender"value="male">
           <option value="">--Select--</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="non-binary">Non-Binary</option>
         </select>
         <label for="gender">Blood Group:</label>
-        <select id="blood_group" name="blood_group">
-          <option value="">--Select--</option>
+        <select id="blood_group" name="blood_group" >
+          <option value="default">{{bloodGroup}}</option>
           <option value="A+">A+</option>
           <option value="A-">A-</option>
           <option value="B+">B+</option>
@@ -31,15 +31,15 @@
           <option value="AB-">AB-</option>
         </select>
         <label for="age">Age:</label>
-        <input type="text" id="age" name="age" required>
+        <input type="text" id="age" name="age" value="{{age}}" required>
         <label for="height">Height (cm):</label>
-        <input type="text" id="height" name="height" required>
+        <input type="text" id="height" name="height" value ="{{height}}" required>
         <label for="weight">Weight (kg):</label>
-        <input type="text" id="weight" name="weight" required>
+        <input type="text" id="weight" name="weight" value="{{weight}}" required>
         <label for="BMI">BMI:</label>
-        <input type="text" id="bmi" name="bmi" required>
+        <input type="text" id="bmi" name="bmi" value="{{bmi}}" required>
         <label for="fg">Fitness Goals:</label>
-        <input type="text" id="fg" name="fg" required>
+        <input type="text" id="fg" name="fg" value="{{idealWeight}}" required>
         <label for="ep">Exercise preferences:</label>
         <input type="text" id="ep" name="ep" required>
         <button type="submit">Submit</button>
