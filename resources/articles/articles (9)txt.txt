@@ -48,5 +48,3 @@ Heat stress sped the mutations up. Following 800 generations of growth in
 laboratory medium, the rate of transposon mutations was five-times higher in
 fungi raised at body temperature (37 Celsius) compared with fungi raised at
 30C.
-
-
