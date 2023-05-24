@@ -7,7 +7,6 @@ from sys import platform
 import pandas as pd
 import os,shutil,random
 from dotenv import load_dotenv
-from flask_sqlalchemy import SQLAlchemy
 from flask import render_template ,request,redirect,url_for,session
 # initializing environment variables
 load_dotenv()
@@ -16,7 +15,6 @@ load_dotenv()
 app = Flask(__name__)
 SECRET_key = os.environ.get("SECRET_KEY")
 app.secret_key = SECRET_key
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db" 
 app.permanent_session_lifetime = timedelta(days=10)
 
 # Dara base inistialization
