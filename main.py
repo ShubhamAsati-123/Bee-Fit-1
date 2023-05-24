@@ -7,7 +7,6 @@ from sys import platform
 import pandas as pd
 import os,shutil,random
 from dotenv import load_dotenv
-from flask_sqlalchemy import SQLAlchemy
 from flask import render_template ,request,redirect,url_for,session
 # initializing environment variables
 load_dotenv()
@@ -16,11 +15,7 @@ load_dotenv()
 app = Flask(__name__)
 SECRET_key = os.environ.get("SECRET_KEY")
 app.secret_key = SECRET_key
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///project.db" 
 app.permanent_session_lifetime = timedelta(days=10)
-
-# Dara base inistialization
-db = SQLAlchemy(app=app)
 
 # declaration of all the csv coloumns
 fields = ["ID","User Name","Email_id","Phone_number","Password","Salt","First_login"]
@@ -499,15 +494,7 @@ def takeinput():
 
 
 # read more page route where the full article will be visible
-@app.route('/readmore')
-def readmore():
-    if 'Id' in session:
-        article = session['article']
-        head = articles.read_heading(article)
-        body = articles.read_body(article)
-        return render_template('readmore.html',head=head,body=body)
-    else:
-        return redirect('SignIn_page')
+
 
 # signup or create account page
 @app.route("/signuppage",methods=['GET','POST'])
