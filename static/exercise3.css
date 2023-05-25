@@ -25,7 +25,7 @@
   .loader::after {
     content: "";
     
-   background: url(images/wired-outline-1186-honeycombs.gif);
+   /* background: url(images/wired-outline-1186-honeycombs.gif); */
   }
   
   @keyframes loading {
