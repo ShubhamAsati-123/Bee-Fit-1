@@ -6,24 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diet Page</title>
 
-    <link rel="stylesheet" href="diet_page.css">
+    <link rel="stylesheet" href="static/diet_page.css">
 </head>
 <body>
     <div class="loader"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
 
     <div class="logo">
-        <img src="Images/Beefit logo.png" alt="Beefit Logo" class="logo">
+        <img src="static/images/Beefit logo.png" alt="Beefit Logo" class="logo">
     </div>
 
     <div class="header">
         <div class="headleft">
-            <a href="main_page.html"><h3 class="headbtn">Home</h3></a>
+            <a href="{{url_for('mainpage')}}"><h3 class="headbtn">Home</h3></a>
             <a href=""><h3 class="headbtn">How It Works</h3></a>
             <div class="dropdown">
               <h3 class="headbtn">Profile</h3>
               <div class="dropdown-content">
-              <a href="#">My Profile</a>
-              <a href="#">Logout</a>
+              <a href="{{url_for('profilepage')}}">My Profile</a>
+              <a href="{{url_for('logout')}}">Logout</a>
               </div>
             </div>
         </div>
@@ -53,13 +53,13 @@
             <div class="text-card" id="card1">
                 <h3>ATKINS DIET</h3>
                 <P>The Atkins diet is a low-carb diet that was created by Dr. Robert Atkins in the 1970s. The diet is based on the idea that when you restrict your intake of carbohydrates, your body will start to burn fat for energy instead of glucose. This can lead to weight loss.Some potential benefits of the diet is weight loss , improved blood sugar control,reduced risk of heart disease.</P>
-                <a href="dietplans/Atkins.pdf"><img src="Images/download-pdf.png" alt="Download" class="dnldimg"></a>
+                <a href="static/dietplans/Atkins.pdf"><img src="static/images/download-pdf.png" alt="Download" class="dnldimg"></a>
             </div>
             <div class="text-card" id="card2">
                 <h3>MEDITERRANEAN DIET</h3>
                 <P>The Mediterranean diet is a healthy eating plan that is based on the traditional cuisines of countries that border the Mediterranean Sea. It is rich in fruits, vegetables, whole grains, nuts, seeds, and olive oil. It also includes moderate amounts of fish, poultry, and dairy products, and low amounts of red meat.The Mediterranean diet has been shown to have a number of health benefits including Weight loss,reduced risk of heart disease,reduced risk of stroke,reduced risk of type 2 diabetes,reduced risk of some types of cancer.
                 </P>
-                <a href="dietplans/Mediterraneandiet.pdf"><img src="Images/download-pdf.png" alt="Download" class="dnldimg"></a>
+                <a href="static/dietplans/Mediterraneandiet.pdf"><img src="static/images/download-pdf.png" alt="Download" class="dnldimg"></a>
 
             </div>
         </div>
@@ -72,13 +72,13 @@
             <div class="text-card" id="card3">
                 <h3>VEGAN DIET</h3>
                 <P>A vegan diet is a plant-based diet that excludes all animal products, including meat, poultry, fish, eggs, dairy, and honey. Vegans also avoid products that are made with animal products, such as leather, wool, and fur.There is a growing body of evidence to suggest that vegan diets can be healthy for people of all ages. Vegans tend to have lower rates of heart disease, stroke, type 2 diabetes, and some types of cancer than people who eat meat. They also tend to have lower body weight and lower blood pressure.</P>
-                <a href="dietplans/Vegan.pdf"><img src="Images/download-pdf.png" alt="Download" class="dnldimg"></a>
+                <a href="static/dietplans/Vegan.pdf"><img src="static/images/download-pdf.png" alt="Download" class="dnldimg"></a>
             </div>
             <div class="text-card" id="card4">
                 <h3>DASH DIET</h3>
                 <P>The DASH diet is rich in fruits, vegetables, whole grains, and low-fat dairy products. It also includes lean protein and nuts. The DASH diet limits saturated fat, trans fat, cholesterol, sodium, and added sugars.The DASH diet has been shown to be effective in lowering blood pressure in people with high blood pressure.The DASH diet has also been shown to improve other risk factors for heart disease, such as cholesterol levels and blood sugar levels.
                 </P>
-                <a href="dietplans/dash.pdf"><img src="Images/download-pdf.png" alt="Download" class="dnldimg"></a>
+                <a href="static/dietplans/dash.pdf"><img src="static/images/download-pdf.png" alt="Download" class="dnldimg"></a>
             </div>
         </div>
     </div>
@@ -90,12 +90,12 @@
             <div class="text-card" id="card5">
                 <h3>PALEO DIET </h3>
                 <P>The paleo diet is a popular diet that is based on the idea of eating like our hunter-gatherer ancestors. The diet excludes processed foods, grains, legumes, dairy, and refined sugar. It focuses on whole, unprocessed foods that were available during the Paleolithic era, such as meat, fish, fruits, vegetables, nuts, and seeds.Some of the potential benefits of the paleo diet are weight loss,improved blood sugar control,reduced risk of heart disease,improved gut health,reduced inflammation and increased energy.</P>
-                <a href="dietplans/Paleo_Diet.pdf"><img src="Images/download-pdf.png" alt="Download" class="dnldimg"></a>
+                <a href="static/dietplans/Paleo_Diet.pdf"><img src="static/images/download-pdf.png" alt="Download" class="dnldimg"></a>
             </div>
             <div class="text-card" id="card6">
                 <h3>WHOLE30 DIET</h3>
                 <P>The Whole30 diet is a 30-day elimination diet that is designed to help you identify food sensitivities and improve your overall health. The diet eliminates all grains, legumes, dairy, sugar, alcohol, and processed foods. It also limits certain fruits and vegetables.After 30 days, you can slowly reintroduce foods to see how your body reacts.The diet is designed to help you improve your overall health by reducing inflammation,improving gut health,weight loss and increased energy levels.</P>
-                    <a href="dietplans/Whole.pdf"><img src="Images/download-pdf.png" alt="Download" class="dnldimg"></a>
+                    <a href="static/dietplans/Whole.pdf"><img src="static/images/download-pdf.png" alt="Download" class="dnldimg"></a>
             </div>
         </div>
     </div>
@@ -108,12 +108,12 @@
                 <h3>ZONE DIET</h3>
                 <P>The Zone diet is a high-protein, moderate-carbohydrate, and low-fat diet that was created by Dr. Barry Sears in the 1990s. The diet is based on the idea that eating a specific ratio of macronutrients can help improve your health and performance.The Zone diet recommends that you eat 40% of your calories from carbohydrates, 30% from protein, and 30% from fat. You should also eat small, frequent meals throughout the day.The Zone diet is a popular choice for athletes and people who are looking to improve their health. The diet has been shown to help with weight loss, improve blood sugar control, and reduce the risk of heart disease.
                 </P>
-                <a href="dietplans/zone.pdf"><img src="Images/download-pdf.png" alt="Download" class="dnldimg"></a>
+                <a href="static/dietplans/zone.pdf"><img src="static/images/download-pdf.png" alt="Download" class="dnldimg"></a>
             </div>
             <div class="text-card" id="card8">
                 <h3>MIND DIET</h3>
                 <p>The MIND diet is a brain-healthy eating plan that combines elements of the Mediterranean diet and the DASH diet. It was developed by researchers at Rush University Medical Center in Chicago, Illinois, and published in the journal Alzheimer's & Dementia in 2015.The MIND diet emphasizes the consumption of foods that are rich in antioxidants, vitamins, and minerals, such as leafy green vegetables, berries, nuts, whole grains, fish, poultry, and olive oil. It also limits the intake of foods that are high in saturated fat, trans fat, sugar, and processed foods.The MIND diet is a healthy eating plan that can help reduce your risk of developing Alzheimer's disease.</p>
-                <a href="dietplans/mind diet.pdf"><img src="Images/download-pdf.png" alt="Download" class="dnldimg"></a>
+                <a href="static/dietplans/mind diet.pdf"><img src="static/images/download-pdf.png" alt="Download" class="dnldimg"></a>
             </div>
         </div>
     </div>
