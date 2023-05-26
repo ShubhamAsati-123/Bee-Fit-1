@@ -6,13 +6,16 @@ from hashlib import sha512
 from sys import platform
 import pandas as pd
 import os,shutil,random
+from dotenv import load_dotenv
 from flask import render_template ,request,redirect,url_for,session
+# initializing environment variables
+load_dotenv()
 
-# app initialization with flask
+# app initialization with flask and seting up secret key
 app = Flask(__name__)
-app.secret_key = "RBS9clfn77yxojqz"
-app.permanent_session_lifetime = timedelta(days=5)
-
+SECRET_key = os.environ.get("SECRET_KEY")
+app.secret_key = SECRET_key
+app.permanent_session_lifetime = timedelta(days=10)
 
 # declaration of all the csv coloumns
 fields = ["ID","User Name","Email_id","Phone_number","Password","Salt","First_login"]
@@ -65,13 +68,13 @@ class articles:
 
     # returns the title of the article given
     def read_heading(file):
-        with open(file,mode='r') as curr_file:
+        with open(file,mode='r',encoding='utf8') as curr_file:
             heading = curr_file.readline()
         return heading
     #  return the body of the article in form of a list
     def read_body(file):
         body_arr = []
-        with open(file,mode='r') as curr_file:
+        with open(file,mode='r',encoding="utf8") as curr_file:
             heading = curr_file.readline()
             body = curr_file.readlines()
             for i in body:
@@ -351,7 +354,8 @@ def mainpage():
 @app.route('/profilepage')
 def profilepage():
     if 'Id' in session:
-        return render_template('profile_page.html')
+        data = retriveData()
+        return render_template('profile_page.html',name = data['Name'],bloodGroup = data['BloodGroup'],age = data['Age'],height = data['Height'],weight=data['Weight'],bmi = data['BMI'],idealWeight = data['IdealWeight'])
     else:
         return redirect('landingpage')
 # route for exercise page
@@ -490,15 +494,7 @@ def takeinput():
 
 
 # read more page route where the full article will be visible
-@app.route('/readmore')
-def readmore():
-    if 'Id' in session:
-        article = session['article']
-        head = articles.read_heading(article)
-        body = articles.read_body(article)
-        return render_template('readmore.html',head=head,body=body)
-    else:
-        return redirect('SignIn_page')
+
 
 # signup or create account page
 @app.route("/signuppage",methods=['GET','POST'])
@@ -522,6 +518,8 @@ def SignUp_page():
             if username not in user_list:
                 del user_list,reenter,df
                 return account_creation(username, password,Email_id,Phone)
+                
+
             else:
                 return "<h1> User already exists please Sign In</h1>"
         else:
@@ -533,6 +531,8 @@ def SignUp_page():
 # sign in page 
 @app.route("/signinpage",methods=['GET','POST'])
 def SignIn_page():
+    if 'Id' in session:
+        return redirect('/mainpage')
     if request.method == 'POST':
         username = request.form['User_name']
         password = request.form['password']
@@ -578,15 +578,14 @@ def SignIn_page():
                 return "<h1> Wrong Username or Password</h1>"
         else:
                 return "<h1> Wrong Username or Password</h1>"
-    if 'Id' in session:
-        return redirect('mainpage')
+   
     return render_template("signinpage.html")
 
 #  page to record the inital data of the user
 @app.route("/accountdetails",methods=['GET','POST'])
 def more_detail():  
     # if First_login == 1 record the data
-    # if first login == 2 dont record data
+    # we changed the fucntionality to directly redirect the user after 
     if 'Id' in session:
         Id = session['Id']
 
@@ -595,7 +594,7 @@ def more_detail():
         First_login_list = df['First_login']
         first_login = First_login_list[Id]
         
-        if first_login == 1:
+        if first_login == 1 or first_login==0:
             if request.method == 'POST':
                 
                 age = request.form['age']
@@ -652,10 +651,10 @@ def account_creation(username , password,Email_id,Phone):
     df2 = pd.DataFrame(data,columns=fields)
     
     df1 = df1.append(df2)
-    
     df1 = df1[fields]
     df1.to_csv(file_id.User_info())
-    return render_template("signupcomplete.html") # here we will return the account confirmation page
+    session['Id'] = int(num)
+    return redirect("/accountdetails") #here we will redirect to our main page
 
 #  function to record our user feedback
 def user_feedback(ID,feedback):
@@ -667,16 +666,38 @@ def user_feedback(ID,feedback):
     df.to_csv(file_id.feedback_form())
     del df,df1
 
-# fucmction to make a dicitonary with key and value list
+# function to make a dicitonary with key and value list
 def make_dict(key_lsit,val_list):
-    dict ={}
+    dict = {}
     for i in range(len(key_lsit)):
         dict[key_lsit[i]] = val_list[i]
 
     return dict
 
+# function to read all the data of the user and send a dict for the profile page
+def retriveData():
+    data = {}
+    df = pd.read_csv(file_id.User_info())
+    df = df[['ID','User Name']]
+    df = df.loc[df['ID']==session['Id']]
+    name = list(df['User Name'])[0]
+    data['Name'] = name  
+    df = pd.read_csv(file_id.details())
+    df = df[fields_details]
+    df = df.loc[df['ID'] == session['Id']]
+    
+    weight = list(df['weight'])[0]
+    age = list(df['age'])[0]
+    height = list(df['height'])[0]
+    blood = list(df['blood group'])[0]
+    data['Weight'] = weight
+    data['Height'] = height
+    data['Age'] = age
+    data['BloodGroup'] = blood
+    data['IdealWeight'] = 21.7*((height/100.0)**2)
+    data['BMI'] = weight/((height/100.0)**2)
+    return data
+
 # running of the page
 if(__name__ ==" __main__"):
     app.run()
-
-
