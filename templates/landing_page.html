@@ -13,21 +13,21 @@
     <div class="loader"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
 
     <div class="logo">
-        <img src="static/images/Beefit logo.png" alt="Beefit Logo" class="logo">
+        <img src="Images/Beefit logo.png" alt="Beefit Logo" class="logo">
     </div>
 
     <div class="header">
         <div class="headleft">
             <a href=""><h3 class="headbtn">How It Works</h3></a>
-            <a href="{{url_for('signinpage')}}"><h3 class="headbtn">Login</h3></a>
-            <a href="{{url_for('signuppage')}}"><h3 class="headbtn">Register</h3></a>
+            <a href=""><h3 class="headbtn">Login</h3></a>
+            <a href=""><h3 class="headbtn">Register</h3></a>
         </div>
     </div>
 
     <div class="head">
         <div class="headline">
             <div class="flybeeimg">
-                <img src="static/images/wired-lineal-1148-bee.gif" alt="Flying Bee" class="flybee">
+                <img src="Images/wired-lineal-1148-bee.gif" alt="Flying Bee" class="flybee">
             </div>
             <h2>
                 Ignite your passion for fitness and unlock your full potential with our expert guidance.
@@ -38,12 +38,12 @@
         <h2 id="ls">Let's get started!</h2>
             
         <div class="account">
-            <a href="{{url_for('signuppage')}}" target="_blank" rel="noopener noreferrer">
+            <a href="http://" target="_blank" rel="noopener noreferrer">
                 <div class="btn">
                     <button>JOIN US</button>
                 </div>
             </a>
-            <a href="{{url_for('signinpage')}}" target="_blank" rel="noopener noreferrer">
+            <a href="http://" target="_blank" rel="noopener noreferrer">
                 <div class="btn">
                     <button>SIGN IN</button>
                 </div>
@@ -54,21 +54,21 @@
 
     <div class="feature">
         <figure class = "card">
-            <img src="static/images/Exercise.jpg" alt="img1" title = "I love eating at subway" width="300" length="500" class="card_image" />
+            <img src="Images/Exercise.jpg" alt="img1" title = "I love eating at subway" width="300" length="500" class="card_image" />
             <figcaption class = "card_body">
                 <h2 class ="card_title">Exercise</h2>
                 <p class = "card_description">The website provides you with the different types and modes of exercise as well as gives information about useful yoga asaanas.We are here to provide you with the best activity suited for your body posture. We also provide efficient video lectures so you can learn from the best resources and practice easily.</p>
             </figcaption>
         </figure>
         <figure class = "card">
-            <img src="static/images/Diet.jpg" alt="img1" title = "I love eating at subway" width="300" length="500" class="card_image" />
+            <img src="Images/Diet.jpg" alt="img1" title = "I love eating at subway" width="300" length="500" class="card_image" />
             <figcaption class = "card_body">
                 <h2 class ="card_title">Diet</h2>
                 <p class = "card_description">The website provides you with different types and most followed diet plans.Each Diet plan effectively has its own benefits and has been stated clearly.Every diet plan has an attached pdf available which will you guide you smoothly and help you achieve your goal.</p>
             </figcaption>
         </figure>
         <figure class = "card">
-            <img src="static/images/Tracking.jpg" alt="img1" title = "I love eating at subway" width="300" length="500" class="card_image" />
+            <img src="Images/Tracking.jpg" alt="img1" title = "I love eating at subway" width="300" length="500" class="card_image" />
             <figcaption class = "card_body">
                 <h2 class ="card_title">Tracking</h2>
                 <p class = "card_description">One of the most advanced and unique feature of the website is tracking.It helps you track your intake calories by simply selecting the food item and its quanity and similarly helps you track your burned calories by selecting a particular mode of exercise and its performed duration.</p>
@@ -78,7 +78,7 @@
     <div class="count">
         <div class="c">
             <div class="frontside">
-                <img src="static/images/counter 1.png" alt="Counter">
+                <img src="Images/counter 1.png" alt="Counter">
                 <h1>Daily Site Visit</h1>
             </div>
             <div class="back">
@@ -87,7 +87,7 @@
         </div>
         <div class="c">
             <div class="frontside">
-                <img src="static/images/meeting 1.png" alt="Counter">
+                <img src="Images/meeting 1.png" alt="Counter">
                 <h1>Feedback Count</h1>
             </div>
             <div class="back">
@@ -96,7 +96,7 @@
         </div>
         <div class="c">
             <div class="frontside">
-                <img src="static/images/group-chat 1.png" alt="">
+                <img src="Images/group-chat 1.png" alt="">
                 <h1>Our Team</h1>
             </div>
             <div class="back">
@@ -105,7 +105,7 @@
         </div>
         <div class="c">
             <div class="frontside">
-                <img src="static/images/survey 1.png" alt="">
+                <img src="Images/survey 1.png" alt="">
                 <h1>Feature Count</h1>
             </div>
             <div class="back">
@@ -230,7 +230,6 @@ vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
  
     function isnumberinput(evt){
         var ch = String.fromCharCode(evt.which);
-
 
         if (!(/[0-9]/.test(ch))){
             evt.preventDefault();

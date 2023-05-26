@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel="stylesheet" href="static/main_page.css">
+    <link rel="stylesheet" href="main_page.css">
 
 </head>
 <body>
     <div class="loadIt"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
     <div class="logo">
-        <img src="static/images/Beefit logo.png" alt="Beefit Logo" class="logo">
+        <img src="Images/Beefit logo.png" alt="Beefit Logo" class="logo">
     </div>
 
     <div class="header">
@@ -35,15 +35,13 @@
 
             <button onclick="myFunction()" id="myBtn">Read more</button>
           </div>
-          <img src="static/images/test.jpg" alt="Image" class="artimg">
+          <img src="Test_Images/test.jpg" alt="Image" class="artimg">
         </div>
     </div>
-
 
     <div class="features">
         <h1>Explore Us</h1>
     </div>
-
 
     <div class="wrap animate pop">
       <div class="overlay">
@@ -62,7 +60,7 @@
           <p><b class="tdecor">W</b>orkout, or exercise is a term often encountered by individuals of all ages. It refers to a wide spectrum of physical activities which give your body a boost of oxygen, blood flow, dopamine and serotonin, making it a great method of maintaining both physical and mental health.</p>
           <p>Some of the most popularly practiced forms of exercise are aerobics, cardio workout, flexibility exercises, pilates, etc. Here at BEEFIT, you have the opportunity to explore the various forms of exercise, in a matter of few clicks!</p>
 
-          <button><a href="{{url_for('exercise')}}">Lets Explore</a></button>
+          <button><a href="diet_page.html">Lets Explore</a></button>
 			</div>
 	</div>
   <div class="wrap animate pop">
@@ -82,7 +80,7 @@
       <p><b class="tdecor">T</b>he key to a healthy body is eating 'right'. This implies following a diet plan constituting of nutritious edibles and a balanced diet, formulated for your fitness journey!</p> 
       <p>Diets definitely don't follow the one-size-fits-all property, and depend on various contributing factors including but not limited to metabolism rates, age, levels of physical activity, etc. Keep reading to find multiple diet plans that you can choose based on your choice of food!</p>
 
-      <button><a href="{{url_for('diet')}}">Lets Explore</a></button>
+      <button><a href="diet_page.html">Lets Explore</a></button>
     </div>
   </div>
   <div class="wrap animate pop">
@@ -102,7 +100,7 @@
         <p><b class="tdecor">D</b>id you know? The amount of calories you are advised to intake corresponds to the amount of physical activity you perform on a daily basis. Based on your fitness goal, i.e. weight loss/weight gain/general fitness, the amount of calories to be consumed differs.</p>
         <p>Our calorie tracker you can measure the amount of calories you are consuming, and the amount of calories that you burn, hence giving you the net calorie consumption.</p>
 
-        <button><a href="{{url_for('take')}}">Lets Explore</a></button>
+        <button><a href="diet_page.html">Lets Explore</a></button>
 			</div>
 	</div>
 
@@ -368,7 +366,6 @@ else {
     if ( !hasClass( elem, c ) ) {
       elem.className = elem.className + ' ' + c;
     }
-
   };
   removeClass = function( elem, c ) {
     elem.className = elem.className.replace( classReg( c ), ' ' );
@@ -441,6 +438,5 @@ function myFunction() {
     moreText.style.display = "inline";
   }
 }
-  
 </script>
 </html>
