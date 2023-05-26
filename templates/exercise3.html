@@ -10,8 +10,7 @@
     <!-- <link rel="stylesheet" href="exercise3.css"> -->
 </head>
 <body>
-    <div class="loader"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
-
+    <div class="loader"></div>
 
     <!-- Navigation Bar -->
     <div class="nav">
@@ -49,12 +48,12 @@
     <div class="g1">
 
         <div class="video">
-            <iframe src="" frameborder="2" class="vid" data-src="https://www.youtube.com/embed/_8kV4FHSdNA" style="background-color: grey;"></iframe>
-            <iframe src="" frameborder="2" class="vid"data-src="https://www.youtube.com/embed/s2NQhpFGIOg" style="background-color: grey;"></iframe>
-            <iframe src="" frameborder="2" class="vid" data-src="https://www.youtube.com/embed/g_tea8ZNk5A" style="background-color: grey;"></iframe>
-            <iframe src="" frameborder="2" class="vid" data-src="https://www.youtube.com/embed/gXuq4M5rU9E" style="background-color: grey;"></iframe>
-            <iframe src="" frameborder="2" class="vid" data-src="https://www.youtube.com/embed/hJbRpHZr_d0" style="background-color: grey;" ></iframe>
-            <iframe src="" frameborder="2" class="vid" data-src="https://www.youtube.com/embed/ZiQh8jA5tVM" style="background-color: grey;"></iframe>
+            <iframe src="https://www.youtube.com/embed/_8kV4FHSdNA" frameborder="2" class="vid"></iframe>
+            <iframe src="https://www.youtube.com/embed/s2NQhpFGIOg" frameborder="2" class="vid"></iframe>
+            <iframe src="https://www.youtube.com/embed/g_tea8ZNk5A" frameborder="2" class="vid"></iframe>
+            <iframe src="https://www.youtube.com/embed/gXuq4M5rU9E" frameborder="2" class="vid"></iframe>
+            <iframe src="https://www.youtube.com/embed/hJbRpHZr_d0" frameborder="2" class="vid"></iframe>
+            <iframe src="https://www.youtube.com/embed/ZiQh8jA5tVM" frameborder="2" class="vid"></iframe>
         </div>
     </div>
     <hr>
@@ -73,16 +72,7 @@
     </div>
 </body>
 
-
-<script type="text/javascript">
-    function load_iframes() {
-var vidDefer = document.getElementsByTagName('iframe');
-for (var i=0; i<vidDefer.length; i++) {
-if(vidDefer[i].getAttribute('data-src')) {
-vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
-} } }
- 
- 
+<script>
     function isnumberinput(evt){
         var ch = String.fromCharCode(evt.which);
 
@@ -99,8 +89,6 @@ vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
 
     loader.addEventListener("transitionend", () => {
         document.body.removeChild(loader);
-        load_iframes();
-
     });
     });
 

@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise Main Page</title>
+    <title>Diet Page</title>
 
-    <link rel="stylesheet" href="static/tracking.css">
+    <link rel="stylesheet" href="static/flexibility.css" type="text/css"> 
 </head>
 <body>
-  <div class="loader"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
+    
+	<div class="loader"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
 
     <div class="logo">
         <img src="static/images/Beefit logo.png" alt="Beefit Logo" class="logo">
@@ -29,9 +30,47 @@
         </div>
     </div>
 
+    <h1>FLEXIBILITY EXERCISE</h1>
+    <P>
+        Few tips for the following exercise are warming up before you stretch which helps to prepare your muscles for stretching and reduces the risk of injury.
+        Some of the benefits of flexibility exercises are improved posture and mental health,reduced risk of injury and stress levels,increased range of motions and easier everyday activities.
 
+    </P>
     
-
+      
+<div>
+<h2>Video Resources</h2>
+<section>
+    <div class ="container reveal">
+        
+        <div class="cards">
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+                     
+          
+        </div>
+    </div>
+</section>
+<section>
+    <div class ="container reveal">
+        
+        <div class="cards">
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+            
+        </div>
+    </div>
+</section>
+<section>
+    <div class ="container reveal">
+        
+        <div class="cards">
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+           
+        </div>
+    </div>
+</section>
 
 <div class="footer">
     <div class="foot">
@@ -128,36 +167,35 @@
 
 
 </body>
-
 <script type="text/javascript">
-  function load_iframes() {
+    function load_iframes() {
 var vidDefer = document.getElementsByTagName('iframe');
 for (var i=0; i<vidDefer.length; i++) {
 if(vidDefer[i].getAttribute('data-src')) {
 vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
 } } }
+ 
+ 
+    function isnumberinput(evt){
+        var ch = String.fromCharCode(evt.which);
+
+        if (!(/[0-9]/.test(ch))){
+            evt.preventDefault();
+        }
+    }
 
 
-  function isnumberinput(evt){
-      var ch = String.fromCharCode(evt.which);
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
 
-      if (!(/[0-9]/.test(ch))){
-          evt.preventDefault();
-      }
-  }
+    loader.classList.add("loader--hidden");
 
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+        load_iframes();
 
-  window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader");
-
-  loader.classList.add("loader--hidden");
-
-  loader.addEventListener("transitionend", () => {
-      document.body.removeChild(loader);
-      load_iframes();
-
-  });
-  });
+    });
+    });
 
 </script>
 </html>

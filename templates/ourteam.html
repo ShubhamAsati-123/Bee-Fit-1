@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise Main Page</title>
+    <title>Our Team Page</title>
 
-    <link rel="stylesheet" href="static/tracking.css">
+    <link rel="stylesheet" href="ourteam.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <div class="loader"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
+    <div class="loader"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
 
     <div class="logo">
-        <img src="static/images/Beefit logo.png" alt="Beefit Logo" class="logo">
+        <img src="Images/Beefit logo.png" alt="Beefit Logo" class="logo">
     </div>
 
     <div class="header">
@@ -29,9 +30,85 @@
         </div>
     </div>
 
+    <div class="ourteam">
+      <div class="container">
+      <div class="row">
+        <div class="card1">
+          <div class="our-team">
+            <div class="picture">
+              <img class="img-fluid" src="static/images/Shubham.jpeg">
+            </div>
+            <div class="team-content">
+              <h3 class="name">Shubham Asatir</h3>
+              <h4 class="title">Web Developer</h4>
+            </div>
+            <ul class="social">
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card2">
+          <div class="our-team">
+            <div class="picture">
+              <img class="img-fluid" src="static/images/Ashmit.jpeg">
+            </div>
+            <div class="team-content">
+              <h3 class="name">Ashmit Jagtap</h3>
+              <h4 class="title">Web Developer</h4>
+            </div>
+            <ul class="social">
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card3">
+          <div class="our-team">
+            <div class="picture">
+              <img class="img-fluid" src="static/images/Anshul.jpeg">
+            </div>
+            <div class="team-content">
+              <h3 class="name">Anshul Kumar</h3>
+              <h4 class="title">Web Developer</h4>
+            </div>
+            <ul class="social">
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card4">
+          <div class="our-team">
+            <div class="picture">
+              <img class="img-fluid" src="static/images/Manas.jpeg">
+            </div>
+            <div class="team-content">
+              <h3 class="name">Manas Agarwal</h3>
+              <h4 class="title">Web Developer</h4>
+            </div>
+            <ul class="social">
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    </div>
     
 
+
+    
 
 <div class="footer">
     <div class="foot">
@@ -128,36 +205,35 @@
 
 
 </body>
-
 <script type="text/javascript">
-  function load_iframes() {
+    function load_iframes() {
 var vidDefer = document.getElementsByTagName('iframe');
 for (var i=0; i<vidDefer.length; i++) {
 if(vidDefer[i].getAttribute('data-src')) {
 vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
 } } }
+ 
+ 
+    function isnumberinput(evt){
+        var ch = String.fromCharCode(evt.which);
+
+        if (!(/[0-9]/.test(ch))){
+            evt.preventDefault();
+        }
+    }
 
 
-  function isnumberinput(evt){
-      var ch = String.fromCharCode(evt.which);
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
 
-      if (!(/[0-9]/.test(ch))){
-          evt.preventDefault();
-      }
-  }
+    loader.classList.add("loader--hidden");
 
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+        load_iframes();
 
-  window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader");
-
-  loader.classList.add("loader--hidden");
-
-  loader.addEventListener("transitionend", () => {
-      document.body.removeChild(loader);
-      load_iframes();
-
-  });
-  });
+    });
+    });
 
 </script>
 </html>

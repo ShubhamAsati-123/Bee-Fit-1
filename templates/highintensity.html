@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise Main Page</title>
+    <title>Diet Page</title>
 
-    <link rel="stylesheet" href="static/tracking.css">
+    <link rel="stylesheet" href="highintensity.css" type="text/css"> 
 </head>
 <body>
-  <div class="loader"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
+    <div class="loader"><img src="static/images/wired-outline-1186-honeycombs.gif" alt=""></div>
 
     <div class="logo">
         <img src="static/images/Beefit logo.png" alt="Beefit Logo" class="logo">
@@ -29,9 +29,48 @@
         </div>
     </div>
 
-
     
+    <h1> High-intensity interval training (HIIT)</h1>
+    <p>
+        HIIT workouts can be challenging, but they are also very effective. If you are new to HIIT, it is important to start slowly and gradually increase the intensity and duration of your workouts. You should also listen to your body and stop if you feel any pain.
+        Some of the benefits of HIIT are improved cardiovascular health,athletic performance and mental health.It also burn calories,build muscles and reduces the risk of chronic diseases.
 
+    </p>
+    
+      
+<div>
+<h2>Video Resources</h2>
+<section>
+    <div class ="container reveal">
+        
+        <div class="cards">
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+                     
+          
+        </div>
+    </div>
+</section>
+<section>
+    <div class ="container reveal">
+        
+        <div class="cards">
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+            
+        </div>
+    </div>
+</section>
+<section>
+    <div class ="container reveal">
+        
+        <div class="cards">
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+            <iframe height="300" width="600"src="https://www.youtube.com/embed/_87z446O0DU" framborder="1"></iframe>
+           
+        </div>
+    </div>
+</section>
 
 <div class="footer">
     <div class="foot">
@@ -128,36 +167,35 @@
 
 
 </body>
-
 <script type="text/javascript">
-  function load_iframes() {
+    function load_iframes() {
 var vidDefer = document.getElementsByTagName('iframe');
 for (var i=0; i<vidDefer.length; i++) {
 if(vidDefer[i].getAttribute('data-src')) {
 vidDefer[i].setAttribute('src',vidDefer[i].getAttribute('data-src'));
 } } }
+ 
+ 
+    function isnumberinput(evt){
+        var ch = String.fromCharCode(evt.which);
+
+        if (!(/[0-9]/.test(ch))){
+            evt.preventDefault();
+        }
+    }
 
 
-  function isnumberinput(evt){
-      var ch = String.fromCharCode(evt.which);
+    window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
 
-      if (!(/[0-9]/.test(ch))){
-          evt.preventDefault();
-      }
-  }
+    loader.classList.add("loader--hidden");
 
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+        load_iframes();
 
-  window.addEventListener("load", () => {
-  const loader = document.querySelector(".loader");
-
-  loader.classList.add("loader--hidden");
-
-  loader.addEventListener("transitionend", () => {
-      document.body.removeChild(loader);
-      load_iframes();
-
-  });
-  });
+    });
+    });
 
 </script>
 </html>
