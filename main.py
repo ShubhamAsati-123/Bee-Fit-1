@@ -502,28 +502,72 @@ def SignUp_page():
     username = ""
     password = ""
     if request.method == 'POST':
-        username = request.form['User_name']
-        Email_id = request.form['Email_id']
-        Phone = request.form['Phone_number']
-        password = request.form['password']
-        reenter =  request.form['re_password'] 
-        
-        df = pd.read_csv(file_id.User_info())
-        user_list = df["User Name"]
-        user_list = list(user_list)
-        if len(Phone) != 10:
-            return render_template("signuppage.html")
+        if "SignUp" in request.form.keys():
+            username = request.form['User_name']
+            Email_id = request.form['Email_id']
+            Phone = request.form['Phone_number']
+            password = request.form['password']
+            reenter =  request.form['re_password'] 
+            
+            df = pd.read_csv(file_id.User_info())
+            user_list = df["User Name"]
+            user_list = list(user_list)
+            if len(Phone) != 10:
+                return render_template("signuppage.html")
 
-        if password == reenter :
-            if username not in user_list:
-                del user_list,reenter,df
-                return account_creation(username, password,Email_id,Phone)
-                
-
+            if password == reenter :
+                if username not in user_list:
+                    del user_list,reenter,df
+                    return account_creation(username, password,Email_id,Phone)
+                else:
+                    return "<h1> User already exists please Sign In</h1>"
             else:
-                return "<h1> User already exists please Sign In</h1>"
+                return "<h1>Wrong Confirm Password go back to home page</h1>"
         else:
-            return "<h1>Wrong Confirm Password go back to home page</h1>"
+            username = request.form['User_name']
+            password = request.form['password']
+            
+            rememberme = request.form.get('rememberme')
+            password_encoded = sha512(password.encode()).hexdigest()
+        
+            df = pd.read_csv(file_id.User_info())
+            user_list = df["User Name"]
+            user_list = list(user_list)
+            
+            if username in user_list:
+                password_list = df["Password"]
+                password_list = list(password_list)
+                num = user_list.index(username)
+                pass_in_data = password_list[num]
+                salt_list =  df["Salt"]
+                salt_list = list(salt_list)
+                salt = salt_list[num]
+                log_list = df["First_login"]
+                log_list = list(log_list)
+                log = log_list[num]
+
+                password_encoded = password_encoded + salt
+
+                if pass_in_data == password_encoded:
+                    session['Id'] = num
+                    if rememberme == '1': # check for making the session permanent
+                        session.permanent = True   
+                    else:
+                        session.permanent = False            
+                    if log==0:
+                        df.at[num,'First_login'] = 1
+                        
+                        df1 = df[fields]
+                        df1.to_csv(file_id.User_info())
+                        del df,df1,salt_list,log_list,password_list,user_list
+                        return redirect(url_for("more_detail")) # return more details page
+                    del df,salt_list,log_list,password_list,user_list
+                    return redirect('mainpage') # return main page here
+                else:
+                    del df,salt_list,log_list,password_list,user_list
+                    return "<h1> Wrong Username or Password</h1>"
+            else:
+                    return "<h1> Wrong Username or Password</h1>"
     else:
         return render_template("signuppage.html")
 
